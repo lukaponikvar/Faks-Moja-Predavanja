@@ -447,33 +447,49 @@ Zato se nam upravičeno vsiljuje naslednja domneva.
     x \textnormal{ in } y \textnormal{ lastnosti, navedeni v }(i)\textnormal{ in }(iii). \\
     \end{align*}
 
-    Dokazali bomo da so $x, y, V, P$ enolično določeni, če Goldbachova domneva drži.
+    Dokazali bomo da so $x, y, V, P$ enolično določeni, če Goldbachova domneva drži.\\
 
-    Po (i) je  vsota V * x + y najmanj enaka 4. Če drži Goldbachova domneva, je vsako sodo število \geq 4 vsota  dveh praštevil. 
-    Pogoj (ii) potemtakem pove, da je V liho število. Tudi razlika V - 2 je liha, ni pa enaka kakšnemu praštevilu p, sad bi sicer 
-    bil V = p + 2 vsota praštevil p in 2. Zato je V - 2 sestavljeno štebvilo. Razstavimo ga v produkt ab, kjer sta faktorja a in b
-    liha in večja  od 1. Tedaj imamo V = ab + 2. Ker sta a in b liha, sta razliki a - 1 in b - 1 sodi in zato lahko pišemo a - 1 = 2m, b - 1 = 2n, kjer sta m in n
-    naravni števili 1. Potem je a = 2m - 1, b = 2n + 1 in V = 4mn + 2(m + n) + 3.
-    Število n bomo zdaj na dva načina zapisali kot vsoto dveh sumndov. Najprej postavimo x = 4mn y= 2(m+n) + 1. Potem je x + y = V
-    Pripadajoči produkt P = xy = (4mn + 2) (2m + 2n + 1) lahko razstavimo na dva faktorja x' in y' tudi takole: x' = 2 y' = (2mn + 1)
-     (2m + 2n + 1) očitno sta faktorja x' y' različna od faktorjev x in y v prejšnem razcepu. Vsota novih faktorjev x' + y' = je liho
-      število in ni vsota dveh praštevil, ker očitno ni praštevilo. Torej smo zapisali V kot vsoto x + y pri tem pa se da pripadajoči
-       produkt P = xy vsaj na dva načina ratzstaviti v produkt dveh faktorjev tako, da vsoto faktorjev ni vsota dveh praštevil. 
-       Drugič razcepimo V na tale sumanda X razcep je različen od prejšnega, ker ni 
-    niti X = x, niti X = y (x je namreč sod, y lih) oglejmo si produkt XY. Če postavimo je X' Y' enako XY. Privzemimo, da je n > 1,
-     torej. Potem je in zato ter. Vsota je liho število. Ker je zaradi n večji od 1 faktor večji od 1, ni vsota dveh praštevil. 
-    Če je torej n večji 1, se da V zapisati vsaj na dva načina kot vsota dveh sumandov, tako da sumanda ustrezata pogojema (i) in 
-    (iii). Zato v tem primeru V nima lastnosti (iv). Isto lahko trdimo tedaj, kadar je. Izraz (1) za V, se pravi, se namreč nič 
-    ne spremeni, če v njem zamenjamo m in n. Tako smo ugotovili, da število V ne zadošča pogoju (iv), če je katero izmed števil 
-    m in n večje od 1.
-    Preostane edina možnost, da je m = n = 1. Tedaj je V = 11 pišemo lahko V = 11 = 2 + 9 = 3 + 8 = 4 + 7 = 5 + 6. Pripadajoči 
-    produkti so 2\cdot 9 = 18, 3 \cdot 8 = 24, 4\cdot 7 = 28 in 5\cdot 6 = 30. Ugotovili smo že,
-    da se da 18 razstaviti samo na en način v produkt dveh faktorjev tako, da vsota faktorjev ni vsota dveh praštevil. Prepričamo
-     se lahko, da velja isto za števili 24 in 28. Pač pa lahko razstavimo 30 na dva načina v produkt dveh faktorjev tako, da vsota
-      faktorjev ni vsota dveh praštevil. En razcep je 5\cdot 6 z vsoto faktorjev 5 + 6 = 11, drugi 2$\cdot$ 15 z vsoto 2 + 15 = 17.
-       Niti 11 niti 17 ni vsota dveh praštevil. Vidimo, da se da 11 samo na en način zapisati kot vsota x + y tako, da sumanda x 
-       in y zadoščata pogoju (iii) namreč 11 je 5 + 6. Torej ima V = 11 tudi lastnost (iv). 
-    Iz povedane je razvidno, da edino števili 5 in 6 z vsoto V = 11 in roduktom P = 30 zadoščata pogojem (i) do (iv).
+    Po $(i)$ je  vsota $V = x + y$ najmanj enaka $4$. Če drži Goldbachova domneva, je vsako sodo število $\geq 4$ vsota  dveh 
+    praštevil. Pogoj $(ii)$ potemtakem pove, da je $V$ liho število. Tudi razlika $V - 2$ je liha, ni pa enaka kakšnemu 
+    praštevilu $p$, saj bi sicer bil $V = p + 2$ vsota praštevil $p$ in $2$. Zato je $V - 2$ sestavljeno število. Razstavimo 
+    ga v produkt $ab$, kjer sta faktorja $a$ in $b$ liha in večja  od $1$. Tedaj imamo $V = ab + 2$. Ker sta $a$ in $b$ liha, 
+    sta razliki $a - 1$ in $b - 1$ sodi in zato lahko pišemo $a - 1 = 2m$, $b - 1 = 2n$, kjer sta $m$ in $n$ naravni števili 
+    $\geq 1$. Potem je $a = 2m + 1$, $b = 2n + 1$ in 
+    \begin{equation} \label{en1}%kako dat enko na desno???
+        V = 4mn + 2(m + n) + 3.
+    \end{equation}
+    Število $n$ bomo zdaj na dva načina zapisali 
+    kot vsoto dveh sumandov. Najprej postavimo $$x = 4mn+2,\quad y= 2(m+n) + 1.$$ Potem je $x + y = V$. Pripadajoči produkt 
+    $$P = xy = (4mn + 2) (2m + 2n + 1)$$ lahko razstavimo na dva faktorja $x'$ in $y'$ tudi takole: $$x' = 2, \quad y' = (2mn + 1)
+    (2m + 2n + 1).$$ Očitno sta faktorja $x'$ in $y'$ različna od faktorjev $x$ in $y$ v prejšnem razcepu. Vsota novih faktorjev 
+    $$x' + y' = (2mn + 1)(2m + 2n + 1)+2$$ je liho število in ni vsota dveh praštevil, ker $(2mn+1)(2m+2n+1)$ očitno ni 
+    praštevilo. Torej smo zapisali $V$ kot vsoto $x + y$, pri tem pa se da pripadajoči produkt $P = xy$ vsaj na dva načina 
+    razstaviti v produkt dveh faktorjev tako, da vsoto faktorjev ni vsota dveh praštevil.
+
+    Drugič razcepimo $V$ na tale sumanda $$X = 4mn - 4m +2, \quad Y= 6m+2n+1.$$ Ta razcep je različen od prejšnega, ker ni niti 
+    $X = x$, niti $X = y$ ($X$ je namreč sod, $y$ lih). Oglejmo si produkt $$XY = (4mn - 4m +2)(6m+2n+1).$$ Če postavimo
+    $$X' = 2, Y'=(2mn - 2m +1)(6m+2n+1),$$ je $X'Y' = XY$. Privzemimo, da je $n > 1$, torej$$4mn-4m=4m(n-1)>0.$$ Potem je 
+    $X = 4m(n-1)+2 > 2$ in zato $X>X'=2$ ter $Y'>Y$. Vsota $$X'+Y' = (2mn - 2m +1)(6m+2n+1)+2$$ je liho število. Ker je zaradi 
+    $n > 1$ faktor večji $2mn-2m+1$ od 1, $X'+Y'$ ni vsota dveh praštevil.
+
+    Če je torej $n > 1$, se da $V$ zapisati vsaj na dva načina kot vsota dveh sumandov, tako da sumanda ustrezata pogojema $(i)$ 
+    in $(iii)$. Zato v tem primeru $V$ nima lastnosti $(iv)$. Isto lahko trdimo tedaj, kadar je $m>1$. Izraz (\ref{en1}) za $V$, se 
+    namreč nič ne spremeni, če v njem zamenjamo $m$ in $n$. Tako smo ugotovili, da število $V$ ne zadošča pogoju (iv), če je 
+    katero izmed števil $m$ in $n$ večje od $1$.
+
+    Preostane edina možnost, da je $m = n = 1$. Tedaj je $V = 11$. Pišemo lahko $$V = 11 = 2 + 9 = 3 + 8 = 4 + 7 = 5 + 6.$$ 
+    Pripadajoči produkti so $2\cdot 9 = 18$, $3 \cdot 8 = 24$, $4\cdot 7 = 28$ in $5\cdot 6 = 30$. Ugotovili smo že,
+    da se da $18$ razstaviti samo na en način v produkt dveh faktorjev tako, da vsota faktorjev ni vsota dveh praštevil. Prepričamo
+    se lahko, da velja isto za števili $24$ in $28$. Pač pa lahko razstavimo $30$ na dva načina v produkt dveh faktorjev tako, 
+    da vsota faktorjev ni vsota dveh praštevil. En razcep je $5\cdot 6$ z vsoto faktorjev $5 + 6 = 11$, drugi $2\cdot 15$ z 
+    vsoto $2 + 15 = 17$. Niti $11$ niti $17$ ni vsota dveh praštevil. Vidimo, da se da $11$ samo na en način zapisati kot vsota 
+    $x + y$ tako, da sumanda $x$ in $y$ zadoščata pogoju $(iii)$ namreč $11 = 5 + 6$. Torej ima $V = 11$ tudi lastnost $(iv)$. 
+
+    Iz povedanega je razvidno, da edino števili $5$ in $6$ z vsoto $V = 11$ in \\produktom $P = 30$ zadoščata pogojem $(i)$ do $(iv)$.
+    Odgovor na zastavljena vprašanje se potemtakem glasi:
+
+    \emph{Peter je izbral števili 5 in 6.}
+\end{proof}
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
