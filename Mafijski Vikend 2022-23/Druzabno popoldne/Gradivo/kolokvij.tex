@@ -1,0 +1,39 @@
+\documentclass[sumniki]{izpit}
+
+\usepackage{multicol}
+\usepackage{enumerate}
+
+\newcommand{\Rat}{\mathbb{Q}}
+\newcommand{\Rea}{\mathbb{R}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Com}{\mathbb{C}}
+\def\R{\small \noindent{\bf Rešitev: } \normalsize}
+\newcommand{\dl}{\ \mathrm d}
+
+\setboolean{@celostranske}{true}
+
+
+\begin{document}
+
+\izpit[naloge = 4]
+  {Kolokvij}{21.~januar~2023}{
+%  Čas pisanja je 90 minut.
+  Možno je doseči 100 točk. Vse odgovore dobro utemelji! Veliko uspeha!
+}
+
+
+\naloga[\tocke{25}] Poišči vsa kompleksna števila \(a \in \mathbb{C}\), pri katerih ima naslednji sistem enačb natanko eno rešitev:
+\[|z-4|=2|z-1|\]
+\[|z-a|+|z-2a|=|a|\]
+Dobljeno množico ustreznih vrednosti za \(a\) grafično ponazori.
+\naloga[\tocke{25}] Ugotovi, za katere \(n \in \mathbb{N}\) obstaja limita
+\[\lim_{x \to \infty}\frac{2023\left(\sqrt[n]{1+x^3}-1\right)-x^3}{(e^{x^2}-1-x^2)\sin^2 x}.\]
+Kadar obstaja, jo izračunaj.
+\naloga[\tocke{25}] Naj bo \(n \geq 2\) in \(\{v_1,\ldots,v_n\}\) baza realnega vektorskega prostora \(V\). 
+Utemelji za katera naravna števila \(n\) je množica 
+\[\{v_1+v_2,v_2+v_3,\ldots,v_n+v_1\}\]
+baza prostora \(V\).
+
+\naloga[\tocke{25}] Izračunaj vsoto v odvisnosti od $x \in \mathbb{R}$
+\[1+ \sum_{n=1}^{2023}\left(n\cdot\sin^2(nx)\right)+\sum_{i=1}^{2023}\left(i\cdot\cos^2(ix)\right).\]
+\end{document}
