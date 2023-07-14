@@ -1,0 +1,500 @@
+\documentclass{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+\usepackage{textcase}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{xypic}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,},group-separator={.}}
+
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+
+{\theoremstyle{theorem}
+\newtheorem{izrek}{Izrek}[section]
+\newtheorem{lema}[izrek]{Lema}
+\newtheorem{trditev}[izrek]{Trditev}
+\newtheorem{posledica}[izrek]{Posledica}
+}
+{\theoremstyle{definition}
+\newtheorem{definicija}[izrek]{Definicija}
+\newtheorem{vaja}[izrek]{Vaja}
+\newtheorem{prob}[izrek]{Nemogoč problem}
+\newtheorem{opomba}[izrek]{Opomba}
+\newtheorem{domneva}[izrek]{Domneva}
+\newtheorem{odprt}[izrek]{Odprt problem}
+\newtheorem{primer}[izrek]{Primer}
+}
+
+% \title[kratek naslov]{poln naslov}
+\title[Praštevila]{Nekaj o praštevilih}
+% Podatki o avtorjih
+\author{Luka Ponikvar}
+\address{Luka Ponikvar\\
+Fakulteta za matematiko in fiziko\\
+Jadranska 19\\
+1000 Ljubljana\\
+Slovenija}
+\email{luka.ponikvar1@gmail.com}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{abstract}
+    Seznanili se bomo s pojmom praštevila in dokazali kar nekaj\\ zanimivih izrekov. Za konec pa si bomo ogledali še en t.i. 
+    ''nemogoč'' problem.
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{O deljivosti števil in kongruencah}
+
+\begin{definicija}[Deljivost]
+    Celo število \(a\) je \emph{deljivo} s celim številom \(b\), če se da \(a\) enolično zapisati kot
+    \[a = kb.\]
+    Tu je \(k \in \ZZ\). V tem primeru se imenuje \(b\) \emph{delitelj} števila \(a\) in \(a\) \emph{večkratnik} števila \(b\).
+    To dejstvo se piše krajše kot \(b \mid a\).
+\end{definicija}
+
+\begin{opomba}
+    Seveda je tudi \(k\) delitelj \(a\)-ja in \(a\) večkratnik od \(k\).
+\end{opomba}
+
+\begin{definicija}
+    Izberimo $m \in \NN$. Pravimo, da sta števili $a$ in $b$ \emph{kongruentni} po modulu $m$, če dasta pri deljenju z $m$ 
+    enak ostanek. Enakovredna zahteva je da $m \mid b-a$. To pišemo kot $$a \equiv b\ (\text{mod } m)$$ in preberemo: 
+    število $a$ je kongruentno $b$ po modulu $m$.
+\end{definicija}
+
+\begin{primer}
+    Oglejmo si množico $\ZZ_9 = \{0,1,2,3,4,5,6,7,8\}$. V to množico uvedemo operaciji seštevanja in množenja  po modulu 9. V $\ZZ_9$
+    \footnote{Kot lahko opazite v $\ZZ_9$ obstajajo rešitve enačbe $x\cdot y = 0$, kjer sta $x,y\neq0$. Če boste imeli čas in željo 
+    lahko premislite, da je to res natanko tedaj, ko smo v $\ZZ_m$, kjer $m$ ni praštevilo. Če smo v $\ZZ_p$, enačba $x\cdot y = 0$ 
+    premore le rešitve, kjer je $x = 0$ ali $y= 0$.}
+    potekajo zadeve takole: 
+    \begin{table}[htp]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{+}& \textbf{0} & \textbf{1}& \textbf{2}& \textbf{3}& \textbf{4}& \textbf{5}& \textbf{6}& \textbf{7}& \textbf{8} \\ \hline
+        0 &0 &1 &2 &3 &4 &5 &6 &7 &8 \\ \hline
+        1 &1 &2 &3 &4 &5 &6 &7 &8 &0 \\ \hline
+        2 &2 &3 &4 &5 &6 &7 &8 &0 &1 \\ \hline
+        3 &3 &4 &5 &6 &7 &8 &0 &1 &2 \\ \hline
+        4 &4 &5 &6 &7 &8 &0 &1 &2 &3 \\ \hline
+        5 &5 &6 &7 &8 &0 &1 &2 &3 &4 \\ \hline
+        6 &6 &7 &8 &0 &1 &2 &3 &4 &5 \\ \hline
+        7 &7 &8 &0 &1 &2 &3 &4 &5 &6 \\ \hline
+        8 &8 &0 &1 &2 &3 &4 &5 &6 &7 \\ \hline
+        \end{tabular}
+        \caption{Tabela za seštevanje v $\ZZ_9$}
+        \label{plus}
+      \end{table}
+
+      \begin{table}[htp]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{$\cdot$}& \textbf{0} & \textbf{1}& \textbf{2}& \textbf{3}& \textbf{4}& \textbf{5}& \textbf{6}& \textbf{7}& \textbf{8} \\ \hline
+        0 &0 &0 &0 &0 &0 &0 &0 &0 &0 \\ \hline
+        1 &0 &1 &2 &3 &4 &5 &6 &7 &8 \\ \hline
+        2 &0 &2 &4 &6 &8 &1 &3 &5 &7 \\ \hline
+        3 &0 &3 &6 &0 &3 &6 &0 &3 &6 \\ \hline
+        4 &0 &4 &8 &3 &7 &2 &6 &1 &5 \\ \hline
+        5 &0 &5 &1 &6 &2 &7 &3 &8 &4 \\ \hline
+        6 &0 &6 &3 &0 &6 &3 &0 &6 &3 \\ \hline
+        7 &0 &7 &5 &3 &1 &8 &6 &4 &2 \\ \hline
+        8 &0 &8 &7 &6 &5 &4 &3 &2 &1 \\ \hline
+        \end{tabular}
+        \caption{Tabela za množenje v $\ZZ_9$}
+        \label{krat}
+      \end{table}
+\end{primer}
+\newpage
+
+\begin{definicija}
+    Naj bo $m \in \NN,\ m \neq 1$ in $a$ element v $\ZZ_m$. Elementu b iz $\ZZ_m$ pravimo \emph{inverz elementa a}, če velja
+    $a \cdot b = 1$.
+\end{definicija}
+
+\begin{primer}
+    V $\ZZ_9$ je $7$ inverz elementa $4$. Hkrati je seveda tudi $4$ inverz elementa $7$. Iz tabele razberemo, da imata ta 
+    elementa enolično določen inverz. Da to ni le naklučje, nam pove naslednji izrek.
+\end{primer}
+
+\begin{izrek}[Inverzi v $\ZZ_p$]
+    Naj bo $p \in \PP$. Vsak \footnote{Ko se pogovarjamo o množenju enoto za seštevanje (0) ponavadi izključimo iz 
+    naše množice.}  element v $\ZZ_p$ ima enolično določen inverz.
+\end{izrek}
+
+\begin{proof}
+    Dokažimo najprej enoličnost inverza. Denimo, da ima $a$ dva inverza $b$ in $c$. Računajmo: 
+    \[b = b\cdot1 = b\cdot (a\cdot c)=(b\cdot a)\cdot c = 1\cdot c= c.\]
+    Ostane nam še dokazati, da vsak element ima inverz. Izberimo poljuben $a$ iz $\ZZ_p$. Ker je $p$ praštevilo,
+    ne more biti za noben $b$ iz $\ZZ_p$ produkt $a\cdot b$ večkratnik od $p$ oz. $a\cdot b \equiv 0\ (\text{mod }p)$. 
+    Če dokažemo, da imata za različna $b, c$ iz $\ZZ_p$ produkta $ ac$ in $ab$ različna ostanka po modulu $p$ je izrek dokazan. 
+    Denimo da to ne velja in imata za $b \neq c$ produkta $ab$ in $ac$ enak ostanek po modulu $p$. Torej je 
+    $a(b-c) \equiv 0\ (\text{mod }p)$. To pa je možno le, ko je eden od faktorjev enak 0. \(\to \gets\)
+\end{proof}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Praštevila}
+
+\begin{definicija}[Praštevilo]
+    Naravno število \(p \neq 1\) je \emph{praštevilo}, če sta njegova edina pozitivna delitelja \(1\) in \(p\). 
+    Množico praštevil označujemo s \(\PP\). Število, ki ni praštevilo in je različno od \(1,\) se imenuje \emph{sestavljeno število}.
+\end{definicija}
+
+\begin{opomba}
+    Pišemo \(\PP = \{p \in \NN \mid p\ \text{praštevilo}\}\)
+\end{opomba}
+
+\begin{izrek}
+    Vsako naravno število \(n\) ima enoličen razcep na prafaktorje.
+\end{izrek}
+
+\begin{izrek}[Evklid]
+    Množica \(\PP\) je neskončna.
+\end{izrek}
+
+\begin{proof}
+    Dokazovali bomo s pomočjo protislovja. Pa predpostavimo, da ima množica \(\PP\) le končno elementov. Torej
+    \(\PP = \{p_1, p_2, \ldots, p_k\}\), \(k \in \NN\). Tvorimo število \[ m = p_1 p_2 \ldots p_k + 1.\]
+    Število \(m\) ni deljivo z nobenim od praštevil \(p_1, p_2, \ldots, p_k\) iz \(\PP\). \(\to \gets\)
+\end{proof}
+
+\begin{definicija}
+    Naj bo $x \in \RR$. $\pi(x) = \left\{p \in \PP \mid p \leq x\right\}$. 
+\end{definicija}
+
+\begin{primer}
+    V $\ZZ_9$ je 7 inverz elementa 4. Hkrati je seveda tudi 4 inverz elementa 7. Iz tabele razberemo, da imata ta elementa enolično 
+    določen inverz. Da to ni le naklučje, nam pove naslednji izrek.
+\end{primer}
+
+\begin{vaja}
+    Poišči praštevila, ki so za $1$ manjša od popolnega kvadrata\footnote{Seveda je vsem jasno, da govorimo o kvadratih naravnih števil.}. 
+\end{vaja}
+
+\begin{vaja}
+    Poišči vsa praštevila $p$, da sta $p+10$ in $p+14$ tudi praštevili.\footnote{Namig : 
+    Vsako praštevilo različno od $2$ in $3$ se da zapisati kot $6k+1$ ali $6k-1$ za nek $k \in \NN$.}
+\end{vaja}
+
+\begin{vaja}
+    Dokaži, da je neskončno praštevil oblike $4k+3$.
+\end{vaja}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fermatova števila}
+
+\begin{definicija}[Fermatovo število]
+    Naj bo \(m \in \NN.\) \emph{Fermatovo število} je število oblike \(F_m = 2^{2^m}+1\). 
+\end{definicija}
+
+\begin{align*}
+    F_0 = 2^{2^0}+1 &= 2^1+1 = 3\\
+    F_1 = 2^{2^1}+1 &= 2^2+1 = 5\\
+    F_2 = 2^{2^2}+1 &= 2^4+1 = 17\\
+    F_3 = 2^{2^3}+1 &= 2^8+1 = 257\\
+    F_4 = 2^{2^4}+1 &= 2^{16}+1 = 65537\\
+    F_5 = 2^{2^5}+1 &= 2^{32}+1 = 4294967297 = 641 \cdot 6700417
+\end{align*}
+
+\begin{domneva}
+    \(F_m \notin \PP\) za \(m \geq 5\)
+\end{domneva}
+
+\begin{trditev}
+    \label{trditev:fermat}
+    \(2\) različni Fermatovi števili imata disjunktne (različne) prafaktorje.
+\end{trditev}
+
+Te trditve še ne znamo dokazati. Poizkusimo dokazati najprej malce lažji izrek (pomožni izrek se imenuje \emph{lema}), ki nam 
+bo prišel prav pri dokazu trditve \ref{trditev:fermat}.
+
+\begin{lema}
+    \label{lema:fermat}
+    Za Fermatova števila velja 
+    \[\prod_{k=0}^{n-1} F_k = F_n - 2.\]
+\end{lema}
+
+\begin{proof}
+    Dokazovali bomo s pomočjo indukcije. S pomočjo tabele zgoraj se prepričamo, da za \(m = 1\) trditev drži.
+    Sedaj nastopi indukcijski korak. Naša indukcijska predpostavka bo, da trditev velja za \(m\). 
+    Sedaj dokažimo, da trditev velja za \(m+1\).
+    \begin{align*}
+        \prod_{k=0}^{m} F_k &= \prod_{k=0}^{m-1} F_k \cdot F_m\\
+        &\stackrel{\text{I.P.}}{=} \left(F_m -2\right) \cdot F_m\\
+        &= \left(2^{2^m}-1\right)\cdot\left(2^{2^m}+1\right)\\
+        &=\left(2^{2^m}\right)^2 - 1\\
+        &=2^{2\cdot 2^m} -1\\
+        &=2^{2^{m+1}}+1-2\\
+        &=F_{m+1}-2
+    \end{align*}
+\end{proof}
+
+\begin{proof}[Dokaz trditve \ref{trditev:fermat}]
+    Vzemimo različni naravni števili \(m,n\). BŠS lahko predpostavimo da je \(n<m\). Predpostavimo, da imata 
+    \(F_n\) in \(F_m\) skupnega delitelja \(d\): \(d \mid F_n\) in \(d \mid F_m\). Iz leme \ref{lema:fermat} sledi, 
+    da \(F_n \mid {F_m - 2}\), kar nam pove, da \(d \mid F_m-2\). Če to zložimo skupaj ugotovimo, da \(d \mid 2\). 
+    Ker sta \(F_n\) in \(F_m\) lihi, sledi \(d = 1\).
+\end{proof}
+
+\begin{posledica}
+    \(\PP\) je neskončna.
+\end{posledica}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vrsta recipročnih vrednosti praštevil}
+Uredimo \(\PP \text{, da bo veljalo } p_1 < p_2< p_3<\ldots\)
+\begin{izrek}
+    Vrsta \[\sum_{p \in \PP} \frac{1}{p} = \sum_{m = 1}^{\infty} \frac{1}{p_m}\] divergira.
+\end{izrek}
+
+\begin{proof}
+    Uporabili bomo dejstvo, da v primeru, ko vrsta \[\sum_{n=1}^{\infty}a_n\] konvergira, obstaja indeks \(n_0\), da velja
+    \[\sum_{n=n_0 +1 }^{\infty}a_n < \frac{1}{2}.\]
+
+    Denimo torej, da vrsta \(\sum_{m = 1}^{\infty} \frac{1}{p_m}\) konvergira. Torej obstaja indeks \(k\), da velja 
+    \(\sum_{m=k+1 }^{\infty} \frac{1}{p_m} < 1/2.\)
+    
+    Imejmo \(p_1, p_2, \ldots, p_k\) za mala praštevila in ostala praštevila za velika.
+
+    Izberimo \(N \in \NN.\) Označimo z \(N_s\) število naravnih števil manjših ali enakih od \(N\), ki imajo v razcepu na prafaktorje le mala praštevila in 
+    z \(N_b\) število naravnih števil manjših ali enakih od \(N\), ki imajo v razcepu na prafaktorje kakšno veliko praštevilo.
+
+    Očitno velja \(N = N_b + N_s\).
+
+    Sedaj bomo ocenili velikost števil \(N_b\) in \(N_s\).\\
+    \\
+    1. \(N_s\): \newline
+    \(n \in \NN\), ki ima same male prafaktorje se razpiše na \(n = p_1^{t_1} p_2^{t_2} \ldots p_k^{t_k}.\)
+    Tu lahko vse \(t_i\) razpišemo kot \(t_i = 2l_i + s_i\), kjer je \(s_i \in \{0,1\}\). Sledi\newline \(n = p_1^{s_1} p_2^{s_2}  \ldots p_k^{s_k} p_1^{2l_1} p_2^{2l_2} \ldots p_k^{2l_k} =p_1^{s_1} p_2^{s_2}  \ldots 
+    p_k^{s_k} \left(p_1^{l_1} p_2^{l_2} \ldots p_k^{l_k}\right)^2 .\) Označimo \newline 
+    \(A := p_1^{l_1} p_2^{l_2} \ldots p_k^{l_k}\) in \(B := p_1^{s_1} p_2^{s_2} \ldots p_k^{s_k}\)
+    \newline Preštejmo možnosti za \(B\): Vsak \(s_i\) ima \(2\) možnosti($0$ ali $1$s), kar skupaj nanese \(2^k\) možnosti.
+    \newline Preštejmo možnosti za \(A\): Ker mora veljati \(A^2 \leq n \leq N\) sledi, da velja \(A \leq \sqrt{N}\)
+    \newline Torej velja \(N_s \leq 2^k\sqrt{N}.\)\\
+    \\
+    1. \(N_b\): \newline
+    \[N_b \stackrel{*}{\leq} \sum_{m \geq k+1}^{\infty} \lfloor \frac{N}{p_m} \rfloor \leq \sum_{m \geq k+1}^{\infty} \frac{N}{p_m} = 
+    N \sum_{m \geq k+1}^{\infty} \frac{1}{p_m} < \frac{N}{2}\]
+    *: Izraz na desni prešteje koliko števil manjših ali enakih N je deljivih s posameznim praštevilom.
+    \newline Sedaj še izberimo \(N = 2^{2k+2}\) in poiščimo protislovje.
+    \[N = N_b+N_s <N/2+2^k\sqrt{N} = 2^{2k+1}+2^k2^{k+1} =2\cdot2^{2k+1}= 2^{2k+2} = N\]
+    \[N<N \rightarrow\leftarrow\]
+\end{proof}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Praštevilski dvojčki}
+
+\begin{definicija}
+    Števili $p$ in $p+2$ sta \emph{praštevilski dvojček}, če velja $p \in \PP$ in $p+2 \in \PP$.
+\end{definicija}
+
+\begin{odprt}
+    Praštevilskih dvojčkov je neskončno.
+\end{odprt}
+
+\begin{opomba}
+    Števili $p$ in $p+2$ morata biti oblike $6k-1$ in $6k+1$. Edini izjemi sta $3$ in $5$.
+\end{opomba}
+
+\begin{izrek}[Brunov izrek]
+    Vrsta \[\sum_{p, p+2 \in \PP} \left(\frac{1}{p} + \frac{1}{p+2}\right)\] konvergira in njena vsota je približno enaka $2$.
+\end{izrek}
+
+\begin{definicija}
+    Naj bo $x \in \RR$. $\pi_2(x) = \left\{p \in \PP \mid p \leq x, p+2 \in \PP \right\}$. 
+\end{definicija}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Karakterizacija praštevil in praštevilskih dvojčkov}
+
+\begin{izrek}[Wilsonov izrek]
+    Naj bo $m \in \NN$ in $m \neq 1$. $m$ je praštevilo natanko tedaj, ko je $\left(m-1\right)! \equiv -1 (\text{mod } m)$.
+\end{izrek}
+
+\begin{proof}
+    Denimo, da $m$ ni praštevilo. Torej se razpiše kot $m = a\cdot b$. Če sta $a$ in $b$ različni števili velja $\left(m-1\right)! 
+    \equiv 0 (\text{mod } m)$. V primeru ko sta $a$ in $b$ enaka ločimo še dve možnosti. če $a$ in $b$ nista praštevili lahko 
+    pišemo $m = a_1\cdot b_1$, kjer sta $a_1$ in $b_2$ različna. V primeru ko sta $a$ in $b $ enaki praštevili bomo uporabili 
+    dejstvo, da je $2p <p^2$. p in 2p nastopata v $\left(m-1\right)!$ torej je $\left(m-1\right)! \equiv 0 (\text{mod } m)$. 
+    Primer ko je $m = 4$ preverimo na roke.
+
+    Denimo, da je $m$ praštevilo. V $\ZZ_m$ imajo vsi elementi enolično določen inverz. Kateri elementi so sami sebi inverz?
+    Enačba $a^2 = 1$ ima v $\ZZ_m$ rešitve $a = 1$ in $a = -1 = m-1$. V $\left(m-1\right)!$ se torej izničijo vsi faktorji 
+    razen $m-1$, ki pa je kongruenten $-1$.
+\end{proof}
+
+\begin{izrek}[Karakterizacija praštevilskih dvojčkov]
+    Par $m$, $m+2$ je praštevilski dvojček natanko tedaj, ko je \(4\left((m-1)!+1\right)+m \equiv 0\ (\text{mod }m(m+2))\).
+\end{izrek}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Porazdelitev praštevil in praštevilskih dvojčkov}
+
+\begin{izrek}
+    Za $x \in \RR$ velja $$\lim_{x \to \infty}\frac{\pi(x)}{\frac{x}{\log(x)}} = 1.$$ Oziroma $\pi(x) \approx \frac{x}{{\log(x)}}$
+\end{izrek}
+
+\begin{opomba}
+    V tem besedilu razumemo $\log(x)$ kot naravni logaritem.
+\end{opomba}
+
+\begin{izrek}
+    Za $x \in \RR$ velja $\pi_2(x) \approx \frac{x}{{\log(x)}^2}$
+\end{izrek}
+
+\begin{izrek}
+
+\end{izrek}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Goldbachova domneva in nemogoči problem}
+
+Kot smo navedli na začetku, se da vsako število, ki je večje od $1$ in ni praštevilo zapisati kot produkt praštevil. Vprašanje, ki 
+si ga lahko zastavimo, je slednje: Ali se da vsako število zapisati kot vsota praštevil? Prav gotovo, če se ne  oziramo na število 
+sumandov: $$100 = 2+ 2+ \ldots +2.$$ Tu je v vsoti kar $50$ seštevancev. Opazimo, da je vsako sodo število vsota samih dvojk, liho 
+pa vsota trojke in dvojk. Število 100 pa lahko izrazimo tudi takole:
+\[100=3+97=11+89=17+83=29+71=41+59=47+53.\]
+Vsi sumandi na desni so praštevila. Torej se da $100$ zapisati kot vsota dveh praštevil, in sicer kar na šest načinov. Poglejmo, kako 
+je pri najmanjših sodih številih:
+\begin{align*}
+    4 &= 2+2\\
+    6 &= 3+3\\
+    8 &= 5+3\\
+    10 &= 5+3= 3+7\\
+    12 &= 5+7
+\end{align*}
+Kaj hitro se prepričamo tudi o nadaljnih neprevelikih sodih številih $12, 14, 16, 18, \ldots,$ da se izražajo kot vsota dveh praštevil.
+Zato se nam upravičeno vsiljuje naslednja domneva.
+
+\begin{domneva}[Goldbachova domneva]
+    Vsako sodo število $\geq 4$ se da zapisati vsaj na en način kot vsota dveh praštevil.
+\end{domneva}
+
+Če nadaljujemo z našo radovednostjo, je očitno naslednje vprašanje: Kaj lahko povemo o lihih številih in vsotah praštevil.
+\begin{domneva}[Šibka Goldbachova domneva]
+    Vsako število $\geq 7$ se da zapisati vsaj na en način kot vsota treh praštevil.
+\end{domneva}
+
+\begin{opomba}
+    Iz Goldbachove domneve sledi šibka Goldbachova domneva, narobe pa ne velja.
+\end{opomba}
+
+\begin{prob}
+    Peter je izbral dve naravni števili večji od 1. Vsoto teh števil je povedal prijatelju Tonetu, produkt pa Mirku. 
+    Tone si ogleda vsoto in \\telefonira Mirku:\\
+    ''Ne vidim možnosti, kako bi ti lahko ugotovil vsoto.''\\
+    Čez nekaj časa odgovori Mirko:\\
+    ''Imaš prav. Ne morem določiti vsote.''\\
+    Kmalu nato se spet oglasi Tone:\\
+    '' Vem, kolikšen je produkt.''\\
+    Kateri števili je izbral Pete?\\
+\end{prob}
+
+\begin{proof}[Rešitev]
+    Imenujmo izbrani naravni števili $x$ in $y$, vsota $x+y$ naj bo $V$, produkt $xy$ pa $P$. Ker sta $x$ in $y$ večja od $1$, 
+    je $P$ produkt najmanj dveh praštevil. Mirko, ki je poznal $P$, je $P$ razstavil na prafaktorje. Vsoto bi takoj našel, če 
+    bi bil $P$ produkt samo dveh praštevil. Recimo, da bi bilo $P = 15 = 3 \cdot 5$. V tem primeru bi Peter izbral števili $3$ 
+    in $5$, vsota pa bi bila $8$. Mirko ni mogel določiti vsote zato, ker je $P$ produkt najmanj treh praštevil. Kako je Tone 
+    to vedel? Ogledal si je vsoto $V$ in videl, da se $V$ ne da zapisati kot vsota dveh praštevil in potemtakem P ne more biti 
+    produkt samo dveh prafaktorjev. Njegovo sporočilo Mirku je zato vsebovalo informacijo, da V ni vsota dveh praštevil.
+
+    Mirko je zdaj skušal razstaviti $P$ na dva faktorja tako, da vsota faktorjev ni vsota dveh praštevil. Če bi se dal $P$ 
+    razstaviti v tem smislu samo na en način, bi Mirko dobil faktorja $x$ in $y$, s tem pa vsoto $V = x+y$. Denimo da bi bilo 
+    $P = 18$. Število $18$ lahko razstavimo na dva načina v produkt dveh fakrotjev, ki sta oba večja od $1$, namreč $18 = 3 
+    \cdot 6= 2 \cdot 9$. Vsota faktorjev v prvem primeru $3+6=9$. Ker je $9 = 2+7$ vsota dveh praštevil, izbrani števili nista 
+    $3$ in $6$. V drugem primeru je vsota faktorjev $2+9 = 11$, ki ni vsota dveh praštevil. Če bi bil torej produkt $18$, bi 
+    Mirko ugotovil, da je Peter izbral števili $2$ in $9$ in da je vsota $V = 11$. Toda Tonetu je telefoniral, da vsote ne more 
+    najti. Zakaj ne? Videl je namreč, da se da $P$ razstaviti vsaj na dva načina v produkt dveh faktorjev tako, da vsota 
+    faktorjev ni vsota dveh praštevil. 
+    
+    Ko je Tone dobil sporočilo od Mirka, je zapisal V na vse možne načine kot vsoto dveh sumandov
+    \[V = 2+(V-2)= 3+(V-3)= \cdots\]
+    in si ogledal pripadajoče produkte  $2(V-2), 3(V-3), 4(V-4)$ itd. Ugotovil je, da je mogoče samo enega izmed njih razstaviti 
+    še na en način v produkt dveh faktorjev tako, da vsota faktorjev ni vsota dveh praštevil. Tisti produkt je bil pravi. Zato je 
+    lahko telefoniral Mirku, da je našel produkt.\\
+
+    Kaj vemo o $x$, $y$, $V$ in $P$?
+    \begin{align*}
+    (i)&\textnormal{ } x \textnormal{ in } y \textnormal{ sta večja od } 1\\
+    (ii)&\textnormal{ } V= x+y \textnormal{ ni vsota dveh praštevil}\\
+    (iii)& \textnormal{ Število }P=xy\textnormal{ se da vsaj še na en način razstaviti v produkt }x'y'\textnormal{ tako, da }\\
+    &\textnormal{ vsota faktorjev }x'+y' \textnormal{ ni vsota dveh praštevil.}\\
+    (iv)&\textnormal{ Število } V \textnormal{ lahko zapišemo na en sam način kot vsoto }x+y,\textnormal{ kjer imata}\\
+    & \textnormal{sumanda }
+    x \textnormal{ in } y \textnormal{ lastnosti, navedeni v }(i)\textnormal{ in }(iii). \\
+    \end{align*}
+
+    Dokazali bomo da so $x, y, V, P$ enolično določeni, če Goldbachova domneva drži.
+
+    Po (i) je  vsota V * x + y najmanj enaka 4. Če drži Goldbachova domneva, je vsako sodo število \geq 4 vsota  dveh praštevil. 
+    Pogoj (ii) potemtakem pove, da je V liho število. Tudi razlika V - 2 je liha, ni pa enaka kakšnemu praštevilu p, sad bi sicer 
+    bil V = p + 2 vsota praštevil p in 2. Zato je V - 2 sestavljeno štebvilo. Razstavimo ga v produkt ab, kjer sta faktorja a in b
+    liha in večja  od 1. Tedaj imamo V = ab + 2. Ker sta a in b liha, sta razliki a - 1 in b - 1 sodi in zato lahko pišemo a - 1 = 2m, b - 1 = 2n, kjer sta m in n
+    naravni števili 1. Potem je a = 2m - 1, b = 2n + 1 in V = 4mn + 2(m + n) + 3.
+    Število n bomo zdaj na dva načina zapisali kot vsoto dveh sumndov. Najprej postavimo x = 4mn y= 2(m+n) + 1. Potem je x + y = V
+    Pripadajoči produkt P = xy = (4mn + 2) (2m + 2n + 1) lahko razstavimo na dva faktorja x' in y' tudi takole: x' = 2 y' = (2mn + 1)
+     (2m + 2n + 1) očitno sta faktorja x' y' različna od faktorjev x in y v prejšnem razcepu. Vsota novih faktorjev x' + y' = je liho
+      število in ni vsota dveh praštevil, ker očitno ni praštevilo. Torej smo zapisali V kot vsoto x + y pri tem pa se da pripadajoči
+       produkt P = xy vsaj na dva načina ratzstaviti v produkt dveh faktorjev tako, da vsoto faktorjev ni vsota dveh praštevil. 
+       Drugič razcepimo V na tale sumanda X razcep je različen od prejšnega, ker ni 
+    niti X = x, niti X = y (x je namreč sod, y lih) oglejmo si produkt XY. Če postavimo je X' Y' enako XY. Privzemimo, da je n > 1,
+     torej. Potem je in zato ter. Vsota je liho število. Ker je zaradi n večji od 1 faktor večji od 1, ni vsota dveh praštevil. 
+    Če je torej n večji 1, se da V zapisati vsaj na dva načina kot vsota dveh sumandov, tako da sumanda ustrezata pogojema (i) in 
+    (iii). Zato v tem primeru V nima lastnosti (iv). Isto lahko trdimo tedaj, kadar je. Izraz (1) za V, se pravi, se namreč nič 
+    ne spremeni, če v njem zamenjamo m in n. Tako smo ugotovili, da število V ne zadošča pogoju (iv), če je katero izmed števil 
+    m in n večje od 1.
+    Preostane edina možnost, da je m = n = 1. Tedaj je V = 11 pišemo lahko V = 11 = 2 + 9 = 3 + 8 = 4 + 7 = 5 + 6. Pripadajoči 
+    produkti so 2\cdot 9 = 18, 3 \cdot 8 = 24, 4\cdot 7 = 28 in 5\cdot 6 = 30. Ugotovili smo že,
+    da se da 18 razstaviti samo na en način v produkt dveh faktorjev tako, da vsota faktorjev ni vsota dveh praštevil. Prepričamo
+     se lahko, da velja isto za števili 24 in 28. Pač pa lahko razstavimo 30 na dva načina v produkt dveh faktorjev tako, da vsota
+      faktorjev ni vsota dveh praštevil. En razcep je 5\cdot 6 z vsoto faktorjev 5 + 6 = 11, drugi 2$\cdot$ 15 z vsoto 2 + 15 = 17.
+       Niti 11 niti 17 ni vsota dveh praštevil. Vidimo, da se da 11 samo na en način zapisati kot vsota x + y tako, da sumanda x 
+       in y zadoščata pogoju (iii) namreč 11 je 5 + 6. Torej ima V = 11 tudi lastnost (iv). 
+    Iz povedane je razvidno, da edino števili 5 in 6 z vsoto V = 11 in roduktom P = 30 zadoščata pogojem (i) do (iv).
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Še nekaj izrekov}
+
+\begin{izrek}[Dirichlet].
+    Naj bosta $a$ in $b$ tuji si naravni števili. V zaporedju 
+    \[a+b, 2a+b, 3a+b, \ldots = \{ak +b \mid k \in \NN\}\]
+    je neskončno praštevil.
+\end{izrek}
+
+\begin{izrek}[Bertrand, Čebišev]
+    Za vsako naravno število $n>1$ obstaja $p \in \PP$, za katerega velja $n<p<2n$.
+\end{izrek}
+
+\begin{izrek}[mali Fermatov izrek]
+    Naj bo $p \in \PP$. Za vsako celo število $a$, ki je tuje $p$, velja
+    \[a^{p-1} \equiv 1\ (\text{\emph{mod} } p).\] 
+\end{izrek}
+
+
+
+
+\end{document}
