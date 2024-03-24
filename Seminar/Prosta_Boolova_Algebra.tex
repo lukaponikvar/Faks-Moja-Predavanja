@@ -1,0 +1,391 @@
+\documentclass{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+\usepackage{textcase}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{xypic}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,},group-separator={.}}
+
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\geslo}[2]{\noindent\textbf{#1} \quad \hangindent=1cm #2\\[-1pc]}
+
+
+
+{\theoremstyle{theorem}
+\newtheorem{izrek}{Izrek}[section]
+\newtheorem{lema}[izrek]{Lema}
+\newtheorem{trditev}[izrek]{Trditev}
+\newtheorem{posledica}[izrek]{Posledica}
+}
+{\theoremstyle{definition}
+\newtheorem{definicija}[izrek]{Definicija}
+\newtheorem{vaja}[izrek]{Vaja}
+\newtheorem{prob}[izrek]{Nemogoč problem}
+\newtheorem{opomba}[izrek]{Opomba}
+\newtheorem{domneva}[izrek]{Domneva}
+\newtheorem{odprt}[izrek]{Odprt problem}
+\newtheorem{primer}[izrek]{Primer}
+}
+\def\qed{$\hfill\Box$}   % konec dokaza
+\def\qedm{\qquad\Box}   % konec dokaza v matematičnem načinu
+
+
+% \title[kratek naslov]{poln naslov}
+\title[Prosta Boolova algebra]{Prosta Boolova algebra\\\Large Seminar}
+% Podatki o avtorjih
+\author{Luka Ponikvar}
+\address{Luka Ponikvar\\
+Fakulteta za matematiko in fiziko\\
+Oddelek za matematiko\\
+Jadranska 21\\
+1000 Ljubljana\\
+Slovenija}
+\email{lp29353@student.uni-lj.si}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{abstract}
+    Pričetek toerije Boolovih algeber je nepresenetljivo pripisan Geogu Boolu,
+    ki 
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Boolove algebre}
+
+\begin{definicija}[Boolova algebra]
+    {\bf Boolova algebra} je neprazna množica \(A\), skupaj z binarnima operacijama \(\vee\) \footnote{Imenujemo jo ``join''\ oz.\ 
+    ``ali''.} in \(\wedge\)\footnote{Imenujemo jo ``meet''\ oz.\ ``in''.}, unarno operacijo \(\neg\)
+    \footnote{Imenujemo jo negacija, označujemo pa tudi kot \('\).} in dvema odlikovanima 
+    elementoma \(0\) in \(1\), ki skupaj zadoščajo sledečim aksiomom\footnote{Negacija ima najvišjo prioriteto, medtem ko ima ``in'' višjo prioriteto kot ``ali''.}:
+
+    \begin{align}
+        \label{eq0}
+        \neg 0 &= 1, & \neg 1 =& 0,\\ \label{eq1}
+        p \wedge 0 &= 0, & p \vee 1 =& 1,\\ \label{eq2}
+        p \wedge 1 &= p, & p \vee 0 =& p,\\ \label{eq3}
+        p \wedge \neg p &= 0, & p \vee \neg p =& 1,\\ \label{eq4}
+         \neg (\neg p) &= p,\\ \label{eq5}
+        p \wedge p &= p, & p \vee p =& p,\\ \label{eq6}
+        \neg (p \wedge q) &= \neg p \vee \neg q, & \neg (p \vee q) =& \neg p \wedge \neg q,\\ \label{eq7}
+        p \wedge q &= q \wedge p, & p \vee q =& q \vee p,\\ \label{eq8}
+        p \wedge (q \wedge r) &= (p \wedge q) \wedge r, & p \wedge (q \vee r) =& (p \vee q) \vee r,\\ \label{eq9}
+        p \wedge (q \vee r) &= (p \wedge q) \vee (p \wedge r), & p \vee (q \wedge r) =& (p \vee q) \wedge (p \vee r).
+    \end{align}
+    
+\end{definicija}
+
+\begin{primer}[Izrojena Boolova algebra]
+    Najenostavnejši je primer izrojene Boolove algebre, ki je potenčna množica prazne množice:
+    \begin{align*}
+        \mathcal{P}\left(\emptyset\right) = \{\emptyset\}.
+    \end{align*}
+    Operacije na tej množici definiramo kot konstantne preslikave, ki vse slikajo v \[0 = 1 = \emptyset.\]
+\end{primer}
+
+\begin{primer}[Boolova algebra z dvema elementoma]
+    Najmanjši primer neizrojene Boolove algebre je potenčna množica enojca\footnote{Element množice smo označili kar z \(\infty\).}:
+    \begin{align*}
+        \mathcal{P}\left(\{\infty\}\right) = \{\emptyset, \{\infty\}\}.
+    \end{align*}
+    Taka Boolova algebra ima le dva elementa:
+    \begin{align*}
+        \emptyset = 0, && \{\infty\} = 1.
+    \end{align*}
+    Operaciji join in meet sta predstavljeni z naslednjima tabelama:
+    \begin{align*}
+    \begin{tabular}{c|c|c|}
+        \(\vee\) & $0$ & $1$ \\
+        \hline
+        $0$ & \(0\) &$1$ \\
+        \hline
+        $1$ & \(1\) & $1$ \\
+        \hline
+    \end{tabular}&& \text{in} &&
+    \begin{tabular}{c|c|c|}
+        \(\wedge\) & $0$ & $1$ \\
+        \hline
+        $0$ & $0$ &$0$ \\
+        \hline
+        $1$ & $0$ & $1$ \\
+        \hline
+    \end{tabular},
+\end{align*}
+komplementacija, pa $0$ preslika v $1$ in obratno.
+\end{primer}
+
+\begin{primer}[Končno-končna Boolova algebra]
+    Najpreprostejši primer Boolove algebre je potenčna množica neprazne množice \(X\), ki jo seveda opremimo z operacijami unije,
+    preseka in komplementa. 
+    
+    Malce splošnejši primer je, da si ogledamo določeno podmnožico \(\mathcal{P}\left(X\right)\).
+    Če definiramo \(A := \{B \subset X~|~B~\text{končna  ali } B'~\text{končna}\}\), tudi dobimo Boolovo algebro, imenovano
+    končno-končna Boolova Algebra.
+
+    Lahko se tudi ne omejimo le na končne, ampak na števne množice in dobimo števno-števno Boolovo algebro.
+    Premislek deluje za poljubno kardinalnost, je pa to težje dokazati.
+\end{primer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Princip dualnosti}
+
+\begin{definicija}[Boolov polinom]
+    {\bf Boolov polinom} je izraz, sestavljen iz konstant \(0\) in \(1\), neznank \(p_0\), \(\ldots\) , \(p_n\), s pomočjo standardnih operacij
+    meet, join in komplementa.
+\end{definicija}
+
+\begin{primer}[Boolov polinom]
+    Primer polinoma je
+    \[p \wedge (q \vee r).\]
+    Ta polinom, pa je na pogled zelo podoben polinomu
+    \[p \vee (q \wedge r),\]
+    kar motivira naslednjo definicijo.
+\end{primer}
+
+\begin{definicija}[Dualnost]
+    Naj bo \(f(p_1, \ldots ,p_n)\) Boolov polinom v n spremenljivkah. Takemu polinomu lahko priredimo
+    tri nove polinome:
+    \begin{enumerate}
+        \item {\bf komplement polinoma} \(f(p_1, \ldots ,p_n)\):
+            \[f'(p_1, \ldots ,p_n),\]
+        \item {\bf dual polinoma} \(f(p_1, \ldots ,p_n)\):
+            \[f'(p_1', \ldots ,p_n'),\]
+        \item {\bf kontradual polinoma} \(f(p_1, \ldots ,p_n)\):
+            \[f(p_1', \ldots ,p'_n).\]
+    \end{enumerate}
+\end{definicija}
+\begin{opomba}
+    V resnici obstaja grupa \(G\), ki deluje na množici \(\mathcal{BP}\) vseh Boolovih polinomov.
+    Obstajajo štiri funkcije, ki bijektivno preslikajo množico \(\mathcal{BP}\) nazaj nase:
+    \begin{enumerate}
+        \item Identična funkcija:
+        \[id: \mathcal{BP} \rightarrow \mathcal{BP}\]
+        \[id: f(p_1, \ldots ,p_n) \mapsto f(p_1, \ldots ,p_n).\]
+        \item Komplementna funkcija:
+        \[c: \mathcal{BP} \rightarrow \mathcal{BP}\]
+        \[c: f(p_1, \ldots ,p_n) \mapsto f'(p_1, \ldots ,p_n).\]
+        \item Dualna funkcija:
+        \[d: \mathcal{BP} \rightarrow \mathcal{BP}\]
+        \[d: f(p_1, \ldots ,p_n) \mapsto f'(p_1', \ldots ,p_n').\]
+        \item Kontradualna funkcija:
+        \[k: \mathcal{BP} \rightarrow \mathcal{BP}\]
+        \[k: f(p_1, \ldots ,p_n) \mapsto f(p_1', \ldots ,p_n').\]
+    \end{enumerate}
+
+    Grupa \(G\) je zaprta za operacijo \(\circ\):
+    \begin{table*}[htp]
+        \begin{tabular}{c|c|c|c|c|}
+            \(\circ\) & $id$ & $c$ & $d$ & $k$ \\
+            \hline
+            $id$ & $id$ &$c$ & $d$ & $k$ \\
+            \hline
+            $c$ & $c$ & $id$ & $k$ & $d$ \\
+            \hline
+            $d$ & $d$ & $k$ & $id$ & $c$ \\
+            \hline
+            $k$ & $k$ & $d$ & $c$ & $id$ \\
+            \hline
+        \end{tabular}.
+    \end{table*}\\
+    Opazimo, da je \(G \cong \ZZ_2  \oplus \ZZ_2 \), torej je Kleinova četverka.
+\end{opomba}
+
+\begin{opomba}
+    Praktična posledica principa dualnosti je moč dokazati le polovico izrekov in trditev, 
+    saj druga polovica sledi iz tega principa.
+\end{opomba}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Urejenost}
+
+V tem razdelku delujemo v poljubni Boolovi algebri A.
+
+\begin{lema}
+    \label{lema1}
+    \(\left(p \vee q\right) \wedge p = p\) in \(\left(p \wedge q\right) \vee p = p\).
+\end{lema}
+
+\begin{proof} 
+    \begin{align*}
+        \left(p \vee q\right) \wedge p &\stackrel{\ref{eq2}}{=} \left(p \vee q\right) \wedge \left(p \vee 0 \right) \\
+                    &\stackrel{\ref{eq9}}{=} p \vee \left(q \wedge 0\right)\\
+                    &\stackrel{\ref{eq1}}{=} p \vee 0\\
+                    &\stackrel{\ref{eq2}}{=} p 
+    \end{align*}
+    Druga furmula sledi iz dualnosti.
+
+\end{proof}
+
+
+\begin{lema}
+    \label{lema2}
+    \(p \wedge q = p\) natanko tedaj ko \(p \vee q = q\).
+\end{lema}
+
+\begin{proof}
+    Če je \(p \wedge q = p\), je 
+    \begin{align*}
+        p \vee q &\stackrel{}{=} \left(p \wedge q\right) \vee q \\
+                    &\stackrel{\ref{eq9}}{=} \left(p \vee q\right) \wedge \left(q \vee q\right) \\
+                    &\stackrel{\ref{eq5}}{=} \left(p \vee q\right) \wedge q\\
+                    &\stackrel{\ref{lema1}}{=} q 
+    \end{align*}
+    Drugo implikacijo dobimo z zamenjavo p in q, ter formiranjem dualov.
+\end{proof}
+
+\begin{definicija}
+    Na vsaki Boolovi algebri lahko vpeljemo urejenost kot:
+    \begin{center}
+        \(p \leq q \) natanko tedaj ko \(p \wedge q  = p.\)
+    \end{center}
+\end{definicija}
+
+\begin{lema}
+    Relacija \(\leq\) je delna urejenost.
+\end{lema}
+
+\begin{proof}
+    Refleksivnost sledi iz \ref{eq5}, antisimetričnost pa sledi iz \ref{eq7}: če je \(p \leq q\) in \(q \leq p\), potem
+    je \(p = p \wedge q = q \wedge p = q\). Tranzitivnost sledi iz \ref{eq8}:
+    če je \(p \leq q\) in \(q \leq r\) je \(p\wedge r = \left(p \wedge q\right) \wedge r = p \wedge \left(q \wedge r\right) = p \wedge q = p\)
+\end{proof}
+
+\begin{lema}
+    \label{lema3}
+    \begin{enumerate}
+        \item \(0 \leq p\) in \(p \leq 1\).
+        \item Če \(p \leq q\) in \(r \leq s\), potem \(p \wedge r \leq q \wedge s\) in \(p \vee r \leq q \vee s\). \label{lema3.2}
+        \item Če \(p \leq q\), potem \(q' \leq p'\).
+    \end{enumerate}
+\end{lema}
+
+\begin{proof}
+    Prva točka je očitna. Druga sledi iz definicije in \ref{lema2}. Tretja točka sledi s komplemetiranjem.
+
+\end{proof}
+
+\begin{definicija}[Meje]
+    Če je $E$ podmnožica delno urejene Boolove algebre \(A\), lahko govorimo o množici \(F\) vseh zgornjih mej za \(E\).
+    Element \(q\) pripada množici \(F\), če za vsak \(p \in E\) velja \(p \leq q\). Če ima \(F\) najmanjši element, je ta 
+    enolično določen in ga imenujemo {\bf supremum} množice \(E\) oz. njena {\bf najmanjša zgornja meja}\footnote{Pišemo tudi natančna zgornja meja.}. Podobno 
+    definiramo {\bf infimum} oz. {\bf največjo spodnjo mejo}\footnote{Pišemo tudi natančna spodnja meja.} množice \(E\)
+\end{definicija}
+
+\begin{primer}[Prazna množica]
+    \label{primer1}
+    Če je \(E = \emptyset\), je vsak element na prazno zgornja meja te množice. Tedaj ima \(E\) supremum, in sicer kar element \(0\)
+    (\ref{lema3} točka \ref{lema3.2}). 
+    Podoben razmislek nas privede do zaključka, da je infimum množice \(E\) element \(1\).
+\end{primer}
+
+\begin{primer}[Enojec]
+    \label{primer2}
+    Če je \(E = \{p\}\), je p hkrati zgornja in spodnja meja za \(E\). Sledi da je p tudi infimum in supremum.
+\end{primer}
+
+\begin{lema}
+    Za vsaka \(p\) in \(q\) ima množica \(\{p, q\}\) za supremum element \(p \vee q\) in za infimum element \(\{p \wedge q\}\)
+\end{lema}
+
+\begin{proof}
+    Očitno je \(p \vee q\) zgornja meja te množice. Zaradi točke \ref{lema3.2} v \ref{lema3}, pa je to tudi natančna zgornja meja:
+    če je $p \leq r$ in $q \leq r$ je $p \wedge q \leq r \wedge r = r$.
+    Drug del sledi iz dualnosti.
+
+\end{proof}
+
+\begin{opomba}[Posplošitev]
+    Lemo bi lahko posplošili na poljubno končno neprazno množico \(E\). Za infimum pišemo \(\bigwedge E\), za supremum pa
+    \(\bigvee E.\) Enake oznake uporabljamo za supremume in infimume poljubnih množic (če jih te seveda imajo).
+
+    Primera \ref{primer1} in \ref{primer2} bi lahko sedaj zapisali kot:
+    \begin{align*}
+        \bigvee \emptyset = 0, && \bigwedge \emptyset = 1, && \bigvee \{p\} = p, && \bigwedge \{p\} = p.
+    \end{align*}
+
+    Če imamo opravka z množico \(\{p_i|~i \in I\}\), kjer je $I$ poljubna indeksna množica, pišemo tudi:
+    \begin{align*}
+        \bigvee_{i \in I} p_i && \bigwedge_{i \in I} p_i
+    \end{align*}
+\end{opomba}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kompletne Boolove algebre}
+
+Končno-končna Boolova algebra je primer Boolove algebre, kjer nimajo vse podmnožice
+natančnih spodnjih oz. zgornjih mej
+
+
+
+
+\newpage
+\section*{Angleško-slovenski slovar strokovnih izrazov}
+
+
+\geslo{Boolean algebra}{Boolova algebra}
+
+\geslo{Degenerate}{Izrojena}
+
+\geslo{The principle of duality}{Princip dualnosti}
+
+\geslo{Lower (upper) bound}{Spodnja(zgornja) meja}
+
+\geslo{Least upper bound}{Najmanjša zgornja meja}
+
+\geslo{Greatest lower bound}{Največja spodnja meja}
+
+\geslo{Complete Boolean algebra}{Kompletna Boolova algebra}
+
+\geslo{Finite-cofinite Boolean algebra}{Končno-končna Boolova algebra}
+
+\geslo{Countable-cocountable Boolean algebra}{Števno-števna Boolova algebra}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+\geslo{}{}
+
+
+\geslo{}{}
+
+
+
+
+
+
+\begin{thebibliography}{1}
+\bibitem{AiZ}
+Givant, Steven; Halmos, Paul. “IntroDuction to Boolean Algebras (Undergraduate Texts in Mathematics),” Springer (2009).\bibitem{CaW}
+N.~Calkin in H.~S.~Wilf, Recounting the rationals,
+\emph{Amer.~Math.~Monthly}  \textbf{107}  (2000),  360--363.
+\bibitem{Gra}
+J.~Grasselli, \emph{Elementarna teorija števil}, DMFA -- založništvo, Ljubljana, 2009.
+\end{thebibliography}
+
+\end{document}
