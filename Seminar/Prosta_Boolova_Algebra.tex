@@ -8,6 +8,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{siunitx}
+\usepackage{bbm}
 \sisetup{output-decimal-marker={,},group-separator={.}}
 
 
@@ -97,7 +98,7 @@ Slovenija}
 \begin{primer}[Boolova algebra z dvema elementoma]
     Najmanjši primer neizrojene Boolove algebre je potenčna množica enojca\footnote{Element množice smo označili kar z \(\infty\).}:
     \begin{align*}
-        \mathcal{P}\left(\{\infty\}\right) = \{\emptyset, \{\infty\}\}.
+        \mathbbm{2} = \mathcal{P}\left(\{\infty\}\right) = \{\emptyset, \{\infty\}\}.
     \end{align*}
     Taka Boolova algebra ima le dva elementa:
     \begin{align*}
@@ -218,10 +219,10 @@ V tem razdelku delujemo v poljubni Boolovi algebri A.
 
 \begin{proof} 
     \begin{align*}
-        \left(p \vee q\right) \wedge p &\stackrel{\ref{eq2}}{=} \left(p \vee q\right) \wedge \left(p \vee 0 \right) \\
-                    &\stackrel{\ref{eq9}}{=} p \vee \left(q \wedge 0\right)\\
-                    &\stackrel{\ref{eq1}}{=} p \vee 0\\
-                    &\stackrel{\ref{eq2}}{=} p 
+        \left(p \vee q\right) \wedge p &\stackrel{\eqref{eq2}}{=} \left(p \vee q\right) \wedge \left(p \vee 0 \right) \\
+                    &\stackrel{\eqref{eq9}}{=} p \vee \left(q \wedge 0\right)\\
+                    &\stackrel{\eqref{eq1}}{=} p \vee 0\\
+                    &\stackrel{\eqref{eq2}}{=} p 
     \end{align*}
     Druga furmula sledi iz dualnosti.
 
@@ -237,8 +238,8 @@ V tem razdelku delujemo v poljubni Boolovi algebri A.
     Če je \(p \wedge q = p\), je 
     \begin{align*}
         p \vee q &\stackrel{}{=} \left(p \wedge q\right) \vee q \\
-                    &\stackrel{\ref{eq9}}{=} \left(p \vee q\right) \wedge \left(q \vee q\right) \\
-                    &\stackrel{\ref{eq5}}{=} \left(p \vee q\right) \wedge q\\
+                    &\stackrel{\eqref{eq9}}{=} \left(p \vee q\right) \wedge \left(q \vee q\right) \\
+                    &\stackrel{\eqref{eq5}}{=} \left(p \vee q\right) \wedge q\\
                     &\stackrel{\ref{lema1}}{=} q 
     \end{align*}
     Drugo implikacijo dobimo z zamenjavo p in q, ter formiranjem dualov.
@@ -256,8 +257,8 @@ V tem razdelku delujemo v poljubni Boolovi algebri A.
 \end{lema}
 
 \begin{proof}
-    Refleksivnost sledi iz \ref{eq5}, antisimetričnost pa sledi iz \ref{eq7}: če je \(p \leq q\) in \(q \leq p\), potem
-    je \(p = p \wedge q = q \wedge p = q\). Tranzitivnost sledi iz \ref{eq8}:
+    Refleksivnost sledi iz \eqref{eq5}, antisimetričnost pa sledi iz \eqref{eq7}: če je \(p \leq q\) in \(q \leq p\), potem
+    je \(p = p \wedge q = q \wedge p = q\). Tranzitivnost sledi iz \eqref{eq8}:
     če je \(p \leq q\) in \(q \leq r\) je \(p\wedge r = \left(p \wedge q\right) \wedge r = p \wedge \left(q \wedge r\right) = p \wedge q = p\)
 \end{proof}
 
@@ -327,9 +328,14 @@ Končno-končna Boolova algebra nad \(\NN\) je primer Boolove algebre, kjer nima
 natančnih spodnjih oz. zgornjih mej. Primer take množice je množica vseh enojcev sodih naravnih števil. To motivira naslednjo definicijo.
 
 \begin{definicija}[Kompletna Boolova algebra]
-    Boolova algebra z lastnostjo, da ima vsaka njena podmnožica infimum in supremum se imenuje {\bf Kompletna
-    Boolova Algebra}.
+    Boolova algebra z lastnostjo, da ima vsaka njena podmnožica infimum in supremum se imenuje {\bf kompletna
+    Boolova algebra}.
 \end{definicija}
+
+
+\begin{opomba}
+    Vsaka končna Boolova algebra je kompletna.
+\end{opomba}
 
 \begin{lema}
     Če je \(\{p_i\}\) družina elementov Boolove algebre, potem:
@@ -340,21 +346,26 @@ natančnih spodnjih oz. zgornjih mej. Primer take množice je množica vseh enoj
 \end{lema}
 
 \begin{proof}
-    
+    Denimo, da je \(p = \bigvee_{i} p_i\). Ker je \(p_i \leq p\) za vsak $i$, sledi iz \ref{lema3}, da je \(p' \leq p_i'\) za vsak $i$.
+    Če je \(q \leq p_i'\) za vse $i$, je \(p_i \leq q'\) za vse $i$ in tako po definiciji supremuma \(p \leq q'\) in \(q \leq p'\). 
+    Torej je $p'$ res \(\bigwedge_{i} p_i'\).
+
+    Dualni argument zadošča za dokaz v desno druge enačbe. Da dokažemo še obratno smer pa lahko dokazane lastnosti uporabimo na družinah komplementov.
+
 \end{proof}
 
 \begin{posledica}[Zadosten pogoj za kompletnost]
     Če ima vsaka podmnožica Boolove algebre infimum (supremum), potem je ta Boolova algebra kompletna.
 \end{posledica}
 
-\begin{proof}
+% \begin{proof}
     
-\end{proof}
+% \end{proof}
 
 Zdaj nas zanimajo še lastnosti natančnih zgornjih (spodnjih) mej. Natančneje njihova asociativnost, komutativnost
-in distributivnost.
+in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimum) pripisan neki množici elementov, torej neodvisno od njihove urejenosti.
 
-\begin{lema}[Asociativnost in komutativnost]
+\begin{lema}[Asociativnost]
     Če je \(\{I_j\}\) družina množic z unijo \(I\), in če je \(p_i\) element Boolove algebre za vsak \(i \in I\), tedaj je
     \begin{align*}
         \bigvee_{j}\left(\bigvee_{i \in I_j} p_i\right) = \bigvee_{i \in I} p_i && \text{in} && \bigwedge_{j}\left(\bigwedge_{i \in I_j} p_i\right) = \bigwedge_{i \in I} p_i.
@@ -362,24 +373,129 @@ in distributivnost.
 \end{lema}
 
 \begin{proof}
-    
+    Označimo z \(q_j = \bigvee_{i \in I_j} p_i\) in s \(q = \bigvee_j q_j\).
+    Za vsak \(i \in I\) obstaja \(j\), da je \(i \in I_j\). Torej za vsak \(i\)
+    obstaja \(j\), da je \(p_i \leq q_j\), kar skupaj s \(q_j \leq q\) da \(p_i \leq q\) za vsak \(i\).
+    Denimo sedaj, da obstaja tak \(r\), da je \(p_i \leq r\) za vse \(i\). Tedaj je še toliko bolj
+    \(p_i \leq r\) za \(i \in I_j\) in po definiciji \(q_j \leq r\) za vsak \(j\).
+    Torej je spet po definiciji \(q \leq r\), kar dokazuje, da je \(q\) res želeni supremum.
+
 \end{proof}
 
 \begin{lema}
-    
+    Če je \(p\) element in \(\{q_j\}\) družina elementov v neki Boolovi algebri, potem
+    \begin{align*}
+        p \wedge \bigvee_i q_i = \bigvee_i (p \wedge q_i).
+    \end{align*}
 \end{lema}
 
 \begin{proof}
-    
+    Pišimo \(q = \bigvee_i q_i\). Ker velja \(p \wedge q_i \leq p \wedge q\) za vse \(i\),
+    je torej element \(p \wedge q\) zgornja meja za \(\bigvee_i (p \wedge q_i).\)
+    Denimo, da je tudi \(r\) zgornja meja. Tedaj velja
+    \begin{align*}
+        q_i \stackrel{\eqref{eq2}}{=} 1 \wedge q_i \stackrel{\eqref{eq3}}{=} (p \vee p') \wedge q_i \stackrel{\eqref{eq9}}{=} \left(p \wedge q_i\right) \vee
+        \left(p' \wedge q_i\right) \leq r \vee \left(p' \wedge q_i\right) \stackrel{\ref{lema3}}{\leq}  r \vee p'.
+    \end{align*}
+    Po definiciji supremuma je \(q \leq r \vee p'\). Sledi
+    \begin{align*}
+        p \wedge q \leq p \wedge \left(r \vee p'\right) \stackrel{\eqref{eq9}}{=}
+        \left(p \wedge r\right) \vee \left(p \wedge p'\right) \stackrel{\eqref{eq3}}{=} \left(p \wedge r\right) \vee 0 \stackrel{\eqref{eq2}}{=} \left(p \wedge r\right) \leq r.
+    \end{align*}
+\end{proof}
+
+\begin{posledica}
+    Če sta \(\{p_i\}\) in \(\{q_j\}\) družini elementov v Boolovi algebri, potem je 
+    \begin{align*}
+        \left(\bigvee_i p_i \right) \wedge \left(\bigvee_j q_j \right)=
+        \bigvee_{i, j} \left(p_i \wedge q_j\right). 
+    \end{align*}
+\end{posledica}
+
+\begin{definicija}[Kompletno distributivnostno pravilo]
+    Naj bo \(A\) Boolova algebra, $I$ in $J$ pa taki indeksni množici, da za vsaka \(i \in I\) in \(j \in J\) 
+    element \(p(i, j)\) leži v $A$. Pravimo, da družina \(\{p(i, j)\}\) zadošča {\bf kompletnemu distributivnostnemu pravilu}, če je 
+    \begin{align}
+        \label{eq11} \bigwedge_{i \in I} \bigvee_{j \in J} p(i, j) = \bigvee_{a \in J^{I}} \bigwedge_{i \in I} p(i, a(i)).
+    \end{align}
+\end{definicija}
+
+
+% Ali mora biti Kompletna, ali se delamo da ne??
+\begin{definicija}[Kompletno distributivna algebra]
+    Boolova algebra A je {\bf kompletno distributivna}, ko ima naslednjo lastnost:
+    ko vsi supremumi \(\bigvee_{j \in J} p(i, j)\) in infimumi \(\bigwedge_{i \in I} p(i, a(i))\) obstajajo za vsako družino
+    \(\{p(i, j)\}\), potem obstoj leve strani \eqref{eq11} implicira obstoj desne strani in njuno enakost.
+\end{definicija}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Atomi}
+
+\begin{definicija}[Podelement]
+    Naj bo $p_0$ element Boolove algebre. Podelement elementa $p_0$ je vsak element
+    \(p\), za katerega velja \(p \leq p_0\) oz. ekvivalentno je podelement elementa $p_0$ vsak element oblike
+    \(p_0 \wedge p\) za nek element \(p\).
+\end{definicija}
+
+\begin{definicija}[Atom]
+    {\bf Atom} Boolove algebre je neničeln element, ki nima netrivialnih podelementov oz.\ ko sta njegova edina podelementa natanko $0$ in on sam.
+\end{definicija}
+
+\begin{lema}
+    Naslednje trditve o elementu $q$ so ekvivalentne:
+    \begin{enumerate}
+        \item $q$ je atom;
+        \item za vsak element $p$ velja natanko ena izmed \(q \leq p\) ali \(q \wedge p = 0\);
+        \item za vsak element $p$ velja natanko ena izmed \(q \leq p\) ali \(q \leq p'\);
+        \item \(q \neq 0\) in če je $q$ pod \(p \vee r\), potem je \(q \leq p\) ali \(q \leq r\);
+        \item \(q \neq 0\) in če je $q$ pod supremumom neke družine \(\{p_i\}\), potem je \(q\) pod \(p_i\) za nek \(i\).
+    \end{enumerate}
+\end{lema}
+
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{lema}
+    Če je element \(p\) supremum množice atomov \(E\), potem je \(E\) množica vseh atomov pod \(p\).
+\end{lema}
+
+\begin{proof}
+    TBD
 \end{proof}
 
 
+\begin{definicija}
+    Boolova algebra je atomska, če vsak neničeln element dominira vsaj en atom. 
+    Boolova algebra je brezatomska, če nima atomov.
+\end{definicija}
+
+\begin{lema}
+    Naslednje trditve o Boolovi algebri \(A\) so ekvivalentne.
+    \begin{enumerate}
+        \item A je atomska.
+        \item Vsak element je supremum atomov, ki jih dominira.
+        \item Enota je supremum množice vseh atomov.
+    \end{enumerate}
+\end{lema}
+
+\begin{proof}
+    TBD
+\end{proof}
+
+% \begin{izrek}
+
+% \end{izrek}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Podalgebre}
 
+\begin{definicija}
+    Boolova podalgebra Boolove algebre $A$ je neprazna podmnožica $B$ množice $A$, ki je z zožitvijo operacij Boolova algebra.
 
-
-
+\end{definicija}
 
 
 
@@ -448,12 +564,8 @@ in distributivnost.
 
 
 \begin{thebibliography}{1}
-\bibitem{AiZ}
-Givant, Steven; Halmos, Paul. “IntroDuction to Boolean Algebras (Undergraduate Texts in Mathematics),” Springer (2009).\bibitem{CaW}
-N.~Calkin in H.~S.~Wilf, Recounting the rationals,
-\emph{Amer.~Math.~Monthly}  \textbf{107}  (2000),  360--363.
-\bibitem{Gra}
-J.~Grasselli, \emph{Elementarna teorija števil}, DMFA -- založništvo, Ljubljana, 2009.
+\bibitem{GSHP}
+Givant, Steven; Halmos, Paul. “Introduction to Boolean Algebras (Undergraduate Texts in Mathematics),” Springer (2009).
 \end{thebibliography}
 
 \end{document}
