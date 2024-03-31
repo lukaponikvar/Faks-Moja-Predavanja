@@ -494,8 +494,89 @@ in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimu
 
 \begin{definicija}
     Boolova podalgebra Boolove algebre $A$ je neprazna podmnožica $B$ množice $A$, ki je z zožitvijo operacij Boolova algebra.
-
+    Vsaka neizrojena Boolova Algebra $A$ ima trivialno podalgebro $\mathbbm{2}$, ostale imamo za netrivialne.\
+    Vsaka Boolova algebra $A$ premore tudi nepravo podalgebro $A$, vse ostale podalgebre so prave.
 \end{definicija}
+
+\begin{opomba}
+    Presek poljubne družine Boolovih podalgeber je ponovno podalgebra. Presek prazne družine porodi nepravo podalgebro.
+\end{opomba}
+
+Če vzamemo neko podmnožico \(E\) v Boolovi algebri \(A\), lahko tvorimo presek vseh podalgeber, ki vsebujejo $E$ (vsaj ena taka obstaja, namreč $A$).
+Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $B$ generirana z $E$ oz.\ da je $E$ množica generatorjev za $B$.
+
+\begin{primer}
+    Vzemimo \(E = \emptyset\). Podalgebra, ki jo ta množica generira je najmanjša podalgebra, ki jo $A$ premore, namreč $\mathbbm{2}$. Če je $E$ sam po sebi podalgebra pa generira samega sebe.
+\end{primer}
+
+\begin{definicija}
+    Podalgebra Boolove algebre A je končno generirana, če je generirana s kakšno končno podmnožico $A$.
+\end{definicija}
+
+Naj bo $A$ Boolova algebra in $B$ podalgebra.
+Izkaže se, da se poljubni supremumi in infimumi obnašajo nepohlevno.
+Supremumi in infimumi lahko spreminjajo vrednosti, lahko jih celo zgubimo ali pa dobimo,
+ko prehajamo med $A$ in $B$.
+
+\begin{definicija}
+    Naj bo $A$ kompletna Boolova algebra in $B$ njena podalgebra.
+    Če za vsako podmnožico $B$ njen supremum (v $A$) leži v $B$ pravimo, da je 
+    $B$ kompletna Boolova podalgebra. Seveda to avtomatično implicira identično trditev za infimume.
+\end{definicija}
+
+Ta definicija je močnejša, kot če bi zahtevali, da je $B$ sama kompletna boolova algebra.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Homomorfizmi}
+
+\begin{definicija}
+    Boolov homomorfizem je taka preslikava $f$ iz Boolova algebre $B$ v 
+    Boolovo algebro $A$, da je 
+    \begin{align*}
+        f(p \wedge q) &= f(p) \wedge f(q),\\
+        f(p \vee q) &= f(p) \vee f(q),\\
+        f(p') &= (f(p))',
+    \end{align*}\footnote{Pišemo tudi \(f(p)'\).}
+    za vsaka \(p, q \in B.\)
+\end{definicija}
+
+Z lahkoto se prepričamo, da velja \(f(0) = 0\) in \(f(1) = 1\). Posledica tega dejstva je, da ne obstaja trivialni homomorfizem med dvema
+neizrojenima Boolovima algebrama. Prepričamo se lahko tudi, da je \(f_{*}(B)\) podalgebra v \(A\).
+
+\begin{definicija}
+    Izomorfizem Boolovih algeber je bijekcija, ki je hkrati homomorfizem.
+\end{definicija}
+
+Izomorfizem ohranja vse morebitne supremume in infimume, homomorfizem pa 
+v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in posledično infimume), ki obstajajo.
+
+\begin{lema}
+    Boolov monomorfizem $f$ iz $B$ v $A$ je kompleten natanko tedaj, ko 
+    je slika \(f_{*}(B)\) regularna podalgebra v $A$.
+\end{lema}
+
+\begin{proof}
+    
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -535,7 +616,7 @@ in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimu
 
 \geslo{Countable-cocountable Boolean algebra}{Števno-števna Boolova algebra}
 
-\geslo{}{}
+\geslo{Atom}{Atom}
 
 \geslo{}{}
 
