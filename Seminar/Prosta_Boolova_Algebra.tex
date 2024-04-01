@@ -560,8 +560,59 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
     
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Razširitve homomorfizmov}
+
+\begin{definicija}
+    Boolov homomorfizem $f$ je razširitev Boolovega homomorfizma $g$, če je 
+    domena $g$ podalgebra domene $f$ in se homomorfizma ujemata na elementih iz domene $g$.
+\end{definicija}
 
 
+\begin{trditev}
+    Če se dva homomorfizma ujemata na množici generatorjev domene, tedaj se ujemata povsod na domeni.
+\end{trditev}
+
+\begin{proof}
+    Naj bosta \(f,g : B \to A\) homomorfizma, ki se ujemata na množici generatorjev $E$.
+    \(C := \{p \in B~|~ f(p) = g (p)\}\). Množica $E$ je očitno vsebovana v
+    $C$, hkrati pa iz \(p,q \in C\) in 
+    \[f(p \vee q) = f(p) \vee f(q) = g(p) \vee g(q) = g(p\vee q)\]
+    sledi, da so \(p \vee q,~ p \wedge q\) in \(p'\) tudi elementi $C$.
+    Sklepamo, da je $C$ podalgebra v $B$, ki vsebuje $E$, iz česar pa takoj sledi, 
+    enakost \(C = B\).
+
+\end{proof}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proste Boolova algebre}
+
+\begin{definicija}
+    Množica $E$ generatorjev Boolove algebre $B$ je prosta, če lahko vsako funkcijo iz $E$ v poljubno
+    Boolovo algebro $A$ razširimo do homomorfizma iz $B$ v $A$. Tedaj pravimo, da $E$ prosto generira $B$ oz.
+    $B$ je prosta na $E$. Boolova algebra je prosta, če premore prosto množico generatorjev.
+\end{definicija}
+
+Definicijo lahko razložimo s pomočjo naslednjega diagrama. $h$ je identična preslikava iz $E$ v $B$,
+$g$ je preslikava, definirana na $E$, $f$ pa je porojen homomorfizem
+iz definicije.
+
+\begin{equation*}
+  \xymatrix{
+    {E}
+    \ar[r]^{h}
+    \ar[dr]_{g}
+    &
+    {B}
+    \ar@{-->}[d]^f
+    \\
+    &
+    {A}
+  }
+\end{equation*}
 
 
 
