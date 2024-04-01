@@ -57,8 +57,19 @@ Slovenija}
 
 
 \begin{abstract}
-    Pričetek toerije Boolovih algeber je nepresenetljivo pripisan Geogu Boolu,
-    ki 
+    Teorija Boolovih algeber seže nazaj vse do leta 1847, ko jo je začel 
+    razvijati George Bool. Verjel je, da se jo lahko uporabi kot aritmetično 
+    orodje za študij in matematično analizo logike. Moderno noto so prispevali:
+    William Stanley Jevons, Augustus De Morgan, Charles Sanders Pierce in 
+    Ernst Schr\"{o}der.
+
+    Šele v 1930-ih se je veja osvobodila okov logike in postala samosvoja moderna 
+    matematična disciplina z globokimi izreki in pomembnimi povezavami z drugimi 
+    vejami matematike kot so algebra, logika in teorija mere, če jih naštejemo le 
+    par. Za to sta nedvomno najbolj zaslužna Marshall Stone in Alfred Tarski.
+
+    V našem skromnem besedilu bomo vpeljali najosnovnejše pojme in brez dokazov 
+    navedli globje izreke.
 \end{abstract}
 
 
@@ -211,6 +222,30 @@ komplementacija, pa $0$ preslika v $1$ in obratno.
 \section{Urejenost}
 
 V tem razdelku delujemo v poljubni Boolovi algebri A.
+
+\begin{lema}
+    \label{lema-1}
+    Če je \(p \vee q = p\) za vse \(p\), potem je \(q = 0\); če je 
+    \(p \wedge q = p\) za vse \(p\), potem je \(q = 1\).
+\end{lema}
+
+\begin{proof}
+    Postavimo $p = 0$ in $p = 1$.
+\end{proof}
+
+\begin{lema}
+    \label{lema0}
+    Če sta $p$ in $q$ taka, da je $p\wedge q = 0$ in $p \vee q = 1$, potem je $q = p'$.
+\end{lema}
+
+\begin{proof}
+    \begin{align*}
+        q &= 1 \wedge q\\ &= (p \vee p') \wedge q  \\&=(p \wedge q) \vee (p' \wedge q) \\ &= 
+        0 \vee (p' \wedge q)\\  &= (p' \wedge p) \vee (p' \wedge q) \\  &= p' \wedge (p \vee q) 
+        \\  &= p' \wedge 1
+        \\  &= p'
+    \end{align*}
+\end{proof}
 
 \begin{lema}
     \label{lema1}
@@ -387,6 +422,7 @@ in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimu
     \begin{align*}
         p \wedge \bigvee_i q_i = \bigvee_i (p \wedge q_i).
     \end{align*}
+    \label{notnes}
 \end{lema}
 
 \begin{proof}
@@ -453,6 +489,83 @@ Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $
 \begin{definicija}
     Podalgebra Boolove algebre A je končno generirana, če je generirana s kakšno končno podmnožico $A$.
 \end{definicija}
+
+
+
+
+\begin{izrek}
+    Naj bo $B$ podalgebra generirana s končno množico $E$.
+    Atomi v $B$ so neničelni elementi oblike 
+    $$p_a = \bigwedge_{i\in E} p(i, a(i)),$$
+    in elementi $B$ so oblike 
+    \[\bigvee_{a \in A \subseteq E} p_a.\]
+    Za vsak element $B$ je ta zapis enoličen.
+\end{izrek}
+
+\begin{proof}
+    Za vsak \(i\in A\) in \(j \in \mathbbm{2}\) vpeljimo oznako 
+    \[p(i,j) = 
+    \begin{cases}
+        i & \text{če $j = 1$,} \\
+        i' & \text{če $j = 0$.}
+    \end{cases}\]
+    Pišimo tudi \(\mathbbm{2}^{E}\) za vse funkcije iz 
+    $E$ v $\mathbbm{2}$ in za vsak \(a \in \mathbbm{2}^{E}\) vpeljimo
+    \[p_a := \bigwedge_{i \in E} p(i, a(i)).\]
+
+    Opazimo lahko, da za $a\neq b \in \mathbbm{2}^{E}$ velja 
+    $p_a \wedge p_b \leq i\wedge i'  = 0$, za nek $i$, kjer se funkciji razlikujeta.
+    Po drugi strani pa velja
+    \begin{align}
+        \label{eq12}
+        1 = \bigwedge_{i \in E} (i \vee i') \stackrel{\eqref{eq11}}{=} \bigvee_{a \in \mathbbm{2}^{E}} 
+        \bigwedge_{i \in E} p(i, a(i)) = \bigvee_{a \in \mathbbm{2}^{E}} p_a.
+    \end{align}
+
+    Naj bo $K$ množica vseh \(a \in \mathbbm{2}^{E}\), da je \(p_a \neq 0\) in za vsako
+    podmnožico $X$ pod $K$ pišimo 
+    \begin{align}
+        \label{eq13}
+        p_X = \bigvee_{a\in X}p_a.
+    \end{align}
+    Veljajo naslednje ugotovitve
+    \begin{enumerate}
+        \item $p_\emptyset = 0,$
+        \item $p_X = 1,$
+        \item $p_X \wedge p_Y = p_{X\cap Y},$
+        \item $p_X \vee p_Y = p_{X\cup Y},$
+        \item $p_X' = p_{X'},$
+    \end{enumerate}
+    kjer $X'$ pomeni komplement množice $X$ v $K$. Prva točka sledi iz tega, da je
+    supremum prazne množice enak $0$. Druga točka sledi iz \eqref{eq12} in definicije $K$.
+    Četrta točka je posledica definicije \eqref{eq13}.
+    \begin{align*}
+        p_X \wedge p_Y = \bigvee_{a\in X}p_a \wedge \bigvee_{b\in Y}p_b &= 
+        \bigvee_{\substack{a\in X \\ b\in Y}} (p_a\wedge p_b)\\
+        &= \bigvee_{a\in X \cap Y} (p_a\wedge p_a) = \bigvee_{a\in X \cap Y} p_a = p_{X\cap Y}
+    \end{align*}
+    dokazuje točko tri, peta točka pa sledi iz
+    \begin{align*}
+        p_X\wedge p_{X'} = p_{x\cap X'} = p_\emptyset = 0 && \text{in}&& p_X\vee p_{X'} = p_{x\cup X'} = p_K = 1,
+    \end{align*}
+    in leme \ref*{lema0}.
+
+    Označimo \(C := \{p_X ~|~ X \subseteq K\}\). Ugotovitve dokazujejo, da je $C$ podalgebra
+    v $A$. Po \eqref{eq0} je C neprazna, po \eqref{eq5}-\eqref{eq7} pa je 
+    zaprta za operacije. Za $a \in K$ je $p_a$ atom. Vsak element iz C se 
+    da enolično zapisati kot unija
+
+    
+
+
+
+
+
+
+\end{proof}
+
+
+
 
 Naj bo $A$ Boolova algebra in $B$ podalgebra.
 Izkaže se, da se poljubni supremumi in infimumi obnašajo nepohlevno.
@@ -573,7 +686,9 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \end{lema}
 
 \begin{proof}
-    TBD
+    Očitno je vsak element iz $E$ pod $p$. 
+    Če je $r$ nek atom pod $p$ velja, da je $r$ pod nekim atomom \(q \in E\),
+    Od tod pa sledi $r = q$.
 \end{proof}
 
 
@@ -592,13 +707,53 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \end{lema}
 
 \begin{proof}
+    \(1 \Rightarrow 2\)) Naj bo $p$ element $A$ in $E$ množica atomov, ki 
+    jih dominira. Očitno je $p$ zgornja meja te množice. Denimo, da je tudi $r$ 
+    zgornja meja te množice. Denimo, da \(p \nleq q\) oz. \(p \wedge  r' \neq 0\).
+    Ker je $A$ atomska obstaja atom \(q \leq (p \wedge r')\). Ker pa je presek 
+    na desni pod $p$ je tedaj $q \in E$, $q \leq r$ in
+    \[q \leq (p \wedge r') \wedge r = p \wedge (r' \wedge r) = p \wedge 0 = 0.\]
+    Sklepamo lahko, da je $q = 0$, kar je protislovje.
+
+    \(2 \Rightarrow 3\)) Očitno. 
+
+
+    \(3 \Rightarrow 1\)) Naj bo \(E\) množica vseh atomov in $p$ neničeln element.
+    Tedaj je 
+    \[p = p \wedge 1 = p \wedge \bigvee E = \bigvee \{p \wedge q~|~q\in E\},\]
+    po lemi \ref*{notnes}. Ker je p neničeln je gotovo \(p \wedge q\) neničeln 
+    za nek \(q \in E\), to pa je atom pod \(p\).
+\end{proof}
+
+\begin{definicija}
+    Reprezentacija Boolove algebre $A$ (nad množico $X$) je vložitev $A$
+    v \(\mathcal{P}(X)\). Če reprezentacija ohranja supremume kot unije
+    (torej tudi infimume kot preseke) ji pravimo kompletna. Z drugimi besedami, 
+    reprezentacija $f$ je kompletna, ko za vsako družino \(\{p_i\}\)
+    s supremumom \(p\) velja 
+    \[f(p) = \bigcup_i f(p_i).\]
+\end{definicija}
+
+\begin{izrek}
+    Naj bo $A$ atomska Boolova algebra in $X$ množica njenih atomov.
+    Korespondenca
+    \[p \to \{q\in X~|~q\leq p\}\]
+    je kompletna reprezentacija $A$ nad $X$.
+\end{izrek}
+
+\begin{proof}
     TBD
 \end{proof}
 
-% \begin{izrek}
+\begin{posledica}
+    Dve kompletni, atomski Boolovi algebri z enakim številom atomov sta izomorfni.
+    Še več, vsaka bijekcija med množicama atomov se lahko razširi do 
+    izomorfizma med algebrama.
+\end{posledica}
 
-% \end{izrek}
-
+\begin{proof}
+    TBD
+\end{proof}
 
 
 
@@ -831,7 +986,9 @@ Torej je \(f_1\) izomorfizem, \(f_2\) pa njegov inverz.
 
 \begin{thebibliography}{1}
 \bibitem{GSHP}
-Givant, Steven; Halmos, Paul. “Introduction to Boolean Algebras (Undergraduate Texts in Mathematics),” Springer (2009).
+Givant, Steven; Halmos, Paul. ``Introduction to Boolean Algebras (Undergraduate Texts in Mathematics),'' Springer (2009).
+\bibitem{KS}
+Jonsson, W. (1970) ‘Boolean Algebras. by Roman Sikorski. Ergebnisse der Math. 25 Springer Verlag, New York, 1969 (third edition)
 \end{thebibliography}
 
 \end{document}
