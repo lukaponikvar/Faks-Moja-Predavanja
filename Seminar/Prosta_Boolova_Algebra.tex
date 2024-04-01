@@ -429,65 +429,6 @@ in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimu
 \end{definicija}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Atomi}
-
-\begin{definicija}[Podelement]
-    Naj bo $p_0$ element Boolove algebre. Podelement elementa $p_0$ je vsak element
-    \(p\), za katerega velja \(p \leq p_0\) oz. ekvivalentno je podelement elementa $p_0$ vsak element oblike
-    \(p_0 \wedge p\) za nek element \(p\).
-\end{definicija}
-
-\begin{definicija}[Atom]
-    {\bf Atom} Boolove algebre je neničeln element, ki nima netrivialnih podelementov oz.\ ko sta njegova edina podelementa natanko $0$ in on sam.
-\end{definicija}
-
-\begin{lema}
-    Naslednje trditve o elementu $q$ so ekvivalentne:
-    \begin{enumerate}
-        \item $q$ je atom;
-        \item za vsak element $p$ velja natanko ena izmed \(q \leq p\) ali \(q \wedge p = 0\);
-        \item za vsak element $p$ velja natanko ena izmed \(q \leq p\) ali \(q \leq p'\);
-        \item \(q \neq 0\) in če je $q$ pod \(p \vee r\), potem je \(q \leq p\) ali \(q \leq r\);
-        \item \(q \neq 0\) in če je $q$ pod supremumom neke družine \(\{p_i\}\), potem je \(q\) pod \(p_i\) za nek \(i\).
-    \end{enumerate}
-\end{lema}
-
-\begin{proof}
-    TBD
-\end{proof}
-
-\begin{lema}
-    Če je element \(p\) supremum množice atomov \(E\), potem je \(E\) množica vseh atomov pod \(p\).
-\end{lema}
-
-\begin{proof}
-    TBD
-\end{proof}
-
-
-\begin{definicija}
-    Boolova algebra je atomska, če vsak neničeln element dominira vsaj en atom. 
-    Boolova algebra je brezatomska, če nima atomov.
-\end{definicija}
-
-\begin{lema}
-    Naslednje trditve o Boolovi algebri \(A\) so ekvivalentne.
-    \begin{enumerate}
-        \item A je atomska.
-        \item Vsak element je supremum atomov, ki jih dominira.
-        \item Enota je supremum množice vseh atomov.
-    \end{enumerate}
-\end{lema}
-
-\begin{proof}
-    TBD
-\end{proof}
-
-% \begin{izrek}
-
-% \end{izrek}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Podalgebre}
@@ -581,14 +522,148 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
     sledi, da so \(p \vee q,~ p \wedge q\) in \(p'\) tudi elementi $C$.
     Sklepamo, da je $C$ podalgebra v $B$, ki vsebuje $E$, iz česar pa takoj sledi, 
     enakost \(C = B\).
+    \label{enolicno}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Atomi}
+
+\begin{definicija}[Podelement]
+    Naj bo $p_0$ element Boolove algebre. Podelement elementa $p_0$ je vsak element
+    \(p\), za katerega velja \(p \leq p_0\) oz. ekvivalentno je podelement elementa $p_0$ vsak element oblike
+    \(p_0 \wedge p\) za nek element \(p\).
+\end{definicija}
+
+\begin{definicija}[Atom]
+    {\bf Atom} Boolove algebre je neničeln element, ki nima netrivialnih podelementov oz.\ ko sta njegova edina podelementa natanko $0$ in on sam.
+\end{definicija}
+
+\begin{lema}
+    Naslednje trditve o elementu $q$ so ekvivalentne:
+    \begin{enumerate}
+        \item $q$ je atom;
+        \item za vsak element $p$ velja natanko ena izmed \(q \leq p\) ali \(q \wedge p = 0\);
+        \item za vsak element $p$ velja natanko ena izmed \(q \leq p\) ali \(q \leq p'\);
+        \item \(q \neq 0\) in če je $q$ pod \(p \vee r\), potem je \(q \leq p\) ali \(q \leq r\);
+        \item \(q \neq 0\) in če je $q$ pod supremumom neke družine \(\{p_i\}\), potem je \(q\) pod \(p_i\) za nek \(i\).
+    \end{enumerate}
+\end{lema}
+
+\begin{proof} 
+    \(1 \Rightarrow 2\)) \(q \wedge p \leq q\), kar implicira ali
+    \(q \wedge p = 0\) ali \(q \wedge p = q\) (\(q \leq p\)). Če bi veljalo oboje, bi bil
+    $q = 0$, kar pa je protislovje. 
+
+    \(2 \Rightarrow 3\)) Če je \(q \wedge p = 0\) je 
+    \[q = q \wedge 1 = q \wedge \left(p \vee p'\right) = \left(q \wedge p\right)
+    \vee \left(q \wedge p'\right) = 0 \vee \left(q \wedge p'\right) = 
+    \left(q \wedge p'\right),\]
+    torej \(q \leq p'\). Če bi veljalo oboje, bi veljalo \(q \leq 0\), kar pa je možno le če 
+    je $q = 0$ in spet dobimo protislovje, saj veljata obe izmed \(q \leq p\) ali \(q \wedge p = 0\).
+
+    \(3 \Rightarrow 4\)) Če je \(q = 0\) dobimo protislovje kot prej. Če ne, je \(q \leq p', r'\), potem je 
+    \(q = q \wedge (p' \wedge r') = q \wedge (p \vee r)'\) in \(q \leq (p \vee r)'\).
+
+    \(4 \Rightarrow 5\))
 
 \end{proof}
+
+\begin{lema}
+    Če je element \(p\) supremum množice atomov \(E\), potem je \(E\) množica vseh atomov pod \(p\).
+\end{lema}
+
+\begin{proof}
+    TBD
+\end{proof}
+
+
+\begin{definicija}
+    Boolova algebra je atomska, če vsak neničeln element dominira vsaj en atom. 
+    Boolova algebra je brezatomska, če nima atomov.
+\end{definicija}
+
+\begin{lema}
+    Naslednje trditve o Boolovi algebri \(A\) so ekvivalentne.
+    \begin{enumerate}
+        \item A je atomska.
+        \item Vsak element je supremum atomov, ki jih dominira.
+        \item Enota je supremum množice vseh atomov.
+    \end{enumerate}
+\end{lema}
+
+\begin{proof}
+    TBD
+\end{proof}
+
+% \begin{izrek}
+
+% \end{izrek}
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proste Boolova algebre}
+\section{Končne Boolove algebre}
+
+\begin{trditev}
+    Končna Boolova algebra je atomska.
+\end{trditev}
+
+\begin{proof}
+    Naj bo \(p\) element končne Boolove algebre. \(p\) je atom, ali pa obstaja 
+    neničeln element \(p_1\), ki je strogo manjši. \(p_1\) je atom (in smo končali), ali pa obstaja 
+    neničeln element \(p_2\), ki je strogo manjši in tako naprej. Ker je elementov 
+    le končno nonogo se mora ta proces ustaviti
+    in tako dobimo atom, ki je manjši od \(p\).
+\end{proof}
+
+\begin{posledica}
+    Vsaka končna Boolova algebra $A$ je izomorfna $\mathcal{P}(n)$, kjer je $n$ število 
+    atomov v $A$.
+\end{posledica}
+
+\begin{proof}
+    Končna Boolova algebra je atomska in kompletna. Naj bo $n$ število atomov v njej.
+    $\mathcal{P}(n)$ je tudi atomska kompletna algebra, ki ima $n$ atomov, ki so 
+    ravno vse enoelementne množice. Taki pa sta po posledici \ref{resime} izomorfni.
+\end{proof}
+
+Posledica nam pove, da ni končnih Boolovih algeber moči, ki ni potenca števila 2.
+
+\begin{posledica}
+    Končni Boolovi algebri z enakim številom elementov sta izomorfni.
+\end{posledica}
+
+\begin{proof}
+    Denimo da imata končni Boolovi algebri $A$ in $B$ enako število elementov.
+    Obe sta atomski in imata $m$ in $n$ atomov. Po prejšnji lemi je 
+    \(A \cong \mathcal{P}(n)\) in \(B \cong \mathcal{P}(m)\). Ker imata enako
+    število elementov velja $n$ = $m$. Ker sta izomorfni isti Boolovi
+    algebri sta tudi med samo izomorfni.
+\end{proof}
+
+\begin{izrek}
+    Boolova identiteta velja v $\mathbbm{2}$ natanko tedaj, 
+    ko jo lahko izpeljemo iz aksiomov iz definicije.
+\end{izrek}
+
+\begin{trditev}
+    Enak nabor identitet velja v vsaki neizrojeni Boolovi algebri.
+\end{trditev}
+
+\begin{proof}
+    Naj bo $A$ poljubna neizrojena Boolova algebra.
+    Identiteta je univerzalna trditev o elementih in operacijah Boolove
+    algebre: če valja v $A$, velja tudi v vsaki podalgebri, saj so elementi 
+    podalgebre med elementi iz $A$ in so operacije le zožitve operacij v $A$.
+    Ker je $A$ neizrojena vsebuje kopijo $\mathbbm{2}$ kot podalgebro, 
+    torej lastnosti v $A$ veljajo tudi v $\mathbbm{2}$. Če lastnost velja
+    v  $\mathbbm{2}$, se jo da po prejšnjem izreku izpeljati iz aksiomov,
+    torej velja tudi v $A$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proste Boolove algebre}
 
 \begin{definicija}
     Množica $E$ generatorjev Boolove algebre $B$ je prosta, če lahko vsako funkcijo iz $E$ v poljubno
@@ -613,6 +688,65 @@ iz definicije.
     {A}
   }
 \end{equation*}
+
+Posledica trditve \ref{enolicno} je, da je dobljeni homomorfizem enolično
+določen z $g$.
+
+Če imamo dve Boolovi algebri $B_1$ in $B_2$, ki sta prosti generirani
+z ekvipolentnima množicama generatorjev $E_1$ in $E_2$,
+sta ti izomorfni. Izomorfizem 
+je porojen z vsako bijekcijo $g$ med $E_1$ in $E_2$.
+Predpostavka o prostosti zagotovi homomorfizma \(f_1: B_1 \to B_2\) in \(f_2: B_2 \to B_1\),
+ki razširita \(g\) in \(g^{-1}\). \(f_1 \circ f_2\) je endomorfizem
+$B_1$, ki razširi \(g^{-1} \circ g\), torej identiteto na $E_1$. Identiteta na $B_1$ sama
+pa je že razširitev te preslikave, torej je zaradi enoličnosti
+\(f_1 \circ f_2 = id_{B_1}\). Podobno vidimo, da je \(f_2 \circ f_1 = id_{B_2}\).
+Torej je \(f_1\) izomorfizem, \(f_2\) pa njegov inverz.
+
+
+
+\begin{table*}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \begin{equation*}
+            \xymatrix{
+            {E_1}
+            \ar[r]^{h_1}
+            \ar@{->}[d]_{g}
+            &
+            {B_1}
+            \ar@<0.5ex>@{-->}[d]^{f_1}
+            \\
+            {E_2}
+            \ar[r]_{h_2}
+            &
+            {B_2}   
+            \ar@<0.5ex>@{-->}[u]^{f_2}
+            }
+        \end{equation*}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \begin{equation*}
+            \xymatrix{
+              {E_1}
+              \ar[r]^{h_1}
+              \ar@{->}[dr]_{g^{-1} \circ g}
+              &
+              {B_1}
+              \ar@{-->}[d]^{f_1}
+              \\
+              &
+              {B_1}      
+            }
+        \end{equation*}
+    \end{minipage} 
+\end{table*}
+
+\begin{trditev}
+    Neskončna prosta Boolova algebra je brezatomska.
+\end{trditev}
+
 
 
 
