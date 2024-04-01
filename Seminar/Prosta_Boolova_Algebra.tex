@@ -553,17 +553,59 @@ Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $
     Označimo \(C := \{p_X ~|~ X \subseteq K\}\). Ugotovitve dokazujejo, da je $C$ podalgebra
     v $A$. Po \eqref{eq0} je C neprazna, po \eqref{eq5}-\eqref{eq7} pa je 
     zaprta za operacije. Za $a \in K$ je $p_a$ atom. Vsak element iz C se 
-    da enolično zapisati kot unija
+    da enolično zapisati kot ``join'' teh elementov. Če je $p_X = p_Y$, je
+    \begin{align*}
+        0 =(p_X \wedge p_Y') \vee (p_X' \wedge p_Y) &= (p_X \wedge p_{Y'}) 
+        \vee (p_{X'} \wedge p_Y)
+        \\&= p_{(X \cap Y') \cup (X' \cap Y)} =: p_{X \oplus Y}
+    \end{align*}
+    kar je enako $0$ natanko tedaj, ko je $X \oplus Y = \emptyset$, to pa velja izključno,
+    ko je $X = Y$.
 
-    
+    Denimo, da je \(F \subseteq E\) in $b \in \mathbbm{2}^{F}$. Pišimo
+    \[p_b = \bigwedge_{i\in F} p(i,b(i)).\]
+    Pokazali bomo, da je $p_b$ v $C$, tako da bomo pokazali
+    \[p_b = \bigwedge \{p_a~|~a\in K \text{ in } a \text{ razširja } b\}.\]
+    Naj bo $L$ množica funkcij v $K$, ki razširjajo $b$. Če je $a$ v $L$, potem je 
+    \(a(i) = b(i)\) in zatorej
+    \[p(i,b(i)) = p(i,a(i)),\]
+    za vsak $i \in F$, posledično
+    \[\{p(i,b(i))~|~i\in F\} \subseteq \{p(i,a(i))~|~i\in E\}.\]
+    Sledi, da 
+    \[p_b = \bigwedge_{i\in F} p(i,b(i)) \geq \bigwedge_{i\in E} p(i,a(i)) = p_a.\]
+    V drugih besedah,
+    \begin{align*}
+        p_b \wedge p_a = p_a && \text{ko} && a\in L. 
+    \end{align*}
+    Po drugi strani pa se v primeru $a \notin L$ $a$ in $b$ razlikujeta na nekem argumentu
+    $i \in F$. Eden izmed $p(i,b(i))$ in $p(i,a(i))$ je torej $i$, drug pa $i'$, torej
+    \[p_b \wedge p_a \leq p(i,b(i)) \wedge p(i,a(i)) = 0.\]
+    Torej 
+    \begin{align*}
+        p_b \wedge p_a = 0 && \text{ko} && a\notin L. 
+    \end{align*}
+    Sklenimo razmislek sedaj z
+    \begin{multline*}
+        p_b = p_b \wedge 1 = p_b \wedge p_K = p_b \wedge \bigvee_{a \in K} p_a
+        = \bigvee_{a \in K} (p_b \wedge p_a) = \bigvee_{a \in L} (p_b \wedge p_a)
+        = \bigvee_{a \in L} p_a
+    \end{multline*}
 
-
-
-
-
-
+    Naj bo $B$ podalgebra v $A$ generirana z $E$. Vzemimo $i \in E$. Če je 
+    $b$ funkcija iz $\{i\}$ v $\mathbbm{2}$, definirana z $b(i) = 1$, potem je
+    $p_b = p(i, b(i)) = i$ in $i\in C$. Posledično je $E$ vsebovan v $C$ in s tem cel $B$.
+    Za dokaz druge smeri se moramo spomniti, da je vsak atom $p_a$ končen ``meet''
+    elementov iz $E$ in njihovih komplementov. Posledično pripada $p_a$ k $B$. Element
+    \(p_X\) je končen ``join'' takih elementov in tudi sam pripada $B$.
 \end{proof}
 
+\begin{posledica}
+    
+\end{posledica}
+
+\begin{proof}
+    
+\end{proof}
 
 
 
