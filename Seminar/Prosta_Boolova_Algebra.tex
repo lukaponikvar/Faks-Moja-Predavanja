@@ -600,13 +600,30 @@ Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $
 \end{proof}
 
 \begin{posledica}
-    
+    Vsaka končno generirana Boolova algebra  je končna in število njenih elementov je 
+    $2^m$, kjer je $m$ število atomov v $A$. Če ima množica generatorjev $n$ elementov, 
+    ima kvečjemu $2^n$ atomov in kvečjemu $2^{2^n}$ elementov.
 \end{posledica}
 
 \begin{proof}
-    
+    Če ima $E$ $n$ elementov, potem je $2^n$ funkcij iz $E$ v $\mathbbm{2}$.
+    Tako obstaja kvečjemu $2^n$ atomov. Denima da je $m$ atomov. 
+    Vsak element se da zapisati kot ``join'' atomov 
+    in vsak ``join'' atomov predstavlja nek element. 
+    Tedaj je natanko $2^{m}$ elementov.
 \end{proof}
 
+\begin{posledica}
+    Element poljubne Boolove algebre je v podalgebri generirani z $E$ natanko tedaj,
+    ko se da zapisati kot končen ``join'' končnih ``meetov'' elementov iz $E$ 
+    in njihovih elementov.
+\end{posledica}
+
+\begin{proof}
+    Denimo, da je $E$ podmnožica v Boolovi algebri $A$. Za vsako končno podmnožico $F$ pod $E$
+    naj bo $B_F$ podalgebra v $A$ generirana z $F$ in naj bo $K_F$ množica funkcij
+    $b \in$ 
+\end{proof}
 
 
 Naj bo $A$ Boolova algebra in $B$ podalgebra.
