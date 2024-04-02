@@ -79,8 +79,8 @@ Slovenija}
 \begin{definicija}[Boolova algebra]
     {\bf Boolova algebra} je neprazna množica \(A\) skupaj z binarnima operacijama \(\vee\) \footnote{Imenujemo jo ``join''\ oz.\ 
     ``ali''.} in \(\wedge\)\footnote{Imenujemo jo ``meet''\ oz.\ ``in''.}, unarno operacijo \(\neg\)
-    \footnote{Imenujemo jo negacija, označujemo pa tudi kot \('\).} in dvema  
-    elementoma \(0\) in \(1\), ki skupaj zadoščajo sledečim aksiomom\footnote{Negacija ima najvišjo prioriteto, medtem ko ima ``in'' višjo prioriteto kot ``ali''.}:
+    \footnote{Imenujemo jo komplementacija, označujemo pa tudi kot \('\).} in dvema  
+    elementoma \(0\) in \(1\), ki skupaj zadoščajo sledečim aksiomom\footnote{Komplementacija ima najvišjo prioriteto, medtem ko ima ``in'' višjo prioriteto kot ``ali''.}:
 
     \begin{align}
         \label{eq0}
@@ -115,7 +115,7 @@ Slovenija}
     \begin{align*}
         \emptyset = 0, && \{\infty\} = 1.
     \end{align*}
-    Operaciji join in meet sta predstavljeni z naslednjima tabelama:
+    Operaciji ali ter in sta predstavljeni z naslednjima tabelama:
     \begin{align*}
     \begin{tabular}{c|c|c|}
         \(\vee\) & $0$ & $1$ \\
@@ -134,7 +134,7 @@ Slovenija}
         \hline
     \end{tabular},
 \end{align*}
-komplementacija, pa $0$ preslika v $1$ in obratno.
+komplementacija pa $0$ preslika v $1$ in obratno.
 \end{primer}
 
 \begin{primer}[Končno-končna Boolova algebra]
@@ -643,7 +643,7 @@ Ta definicija je močnejša, kot če bi zahtevali, da je $B$ sama kompletna bool
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Homomorfizmi}
 
-\begin{definicija}
+\begin{definicija}[Boolov homomorfizem]
     Boolov homomorfizem je taka preslikava $f$ iz Boolova algebre $B$ v 
     Boolovo algebro $A$, da je 
     \begin{align*}

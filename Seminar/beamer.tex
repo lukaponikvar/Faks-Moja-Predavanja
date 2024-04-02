@@ -1,0 +1,231 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+
+\usepackage{palatino}
+\usefonttheme{serif}
+\usetheme{Berlin}
+\usecolortheme{default}
+\useinnertheme[shadows]{rounded}
+\useoutertheme{infolines}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+\usepackage{textcase}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{xypic}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{bbm}
+\sisetup{output-decimal-marker={,},group-separator={.}}
+
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\geslo}[2]{\noindent\textbf{#1} \quad \hangindent=1cm #2\\[-1pc]}
+
+
+
+{\theoremstyle{theorem}
+\newtheorem{izrek}{Izrek}[section]
+\newtheorem{lema}[izrek]{Lema}
+\newtheorem{trditev}[izrek]{Trditev}
+\newtheorem{posledica}[izrek]{Posledica}
+}
+{\theoremstyle{definition}
+\newtheorem{definicija}[izrek]{Definicija}
+\newtheorem{vaja}[izrek]{Vaja}
+\newtheorem{prob}[izrek]{Nemogoč problem}
+\newtheorem{opomba}[izrek]{Opomba}
+\newtheorem{domneva}[izrek]{Domneva}
+\newtheorem{odprt}[izrek]{Odprt problem}
+\newtheorem{primer}[izrek]{Primer}
+}
+\def\qed{$\hfill\Box$}   % konec dokaza
+\def\qedm{\qquad\Box}   % konec dokaza v matematičnem načinu
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\beamertemplatenavigationsymbolsempty
+
+
+
+
+% \newtheorem{izrek}{izrek}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\abs}[1]{|#1|}
+\newcommand{\nastevanje}[2]{#1_1 + #1_2 + \ldots + #1_{#2}}
+
+%\bibliographystyle{siam}
+%\bibliography{magic}
+%\cite[Poglavje 3]{}
+
+
+\title{Prosta Boolova algebra}
+\subtitle{Seminar}
+\author{Luka Ponikvar}
+\institute [FMF] {Fakulteta za matematiko in fiziko}
+\date{}
+% ===================================================================
+\begin{document}
+  
+
+% Naslovna stran
+\begin{frame}
+ \titlepage
+\end{frame}
+% -------------------------------------------------------------------
+
+% Prosojnica: Kratek pregled
+% \begin{frame}
+%   \frametitle{Kratek pregled}
+% \tableofcontents[pausesections]
+  
+
+% \end{frame}
+% ===================================================================
+
+% \section{Osnovna razdelitev vsebine}
+%\begin{frame}
+  
+%\end{frame}
+% -------------------------------------------------------------------
+
+% Prosojnica: Naštevanje
+  \begin{frame}
+    \begin{columns}
+        \begin{column}{\textwidth}
+            \begin{definicija}[Boolova algebra]
+                {\bf Boolova algebra} je neprazna množica \(A\) skupaj z binarnima operacijama 
+                \(\vee\)  in \(\wedge\), unarno operacijo \(\neg\)
+                 in dvema  
+                elementoma \(0\) in \(1\), ki skupaj zadoščajo sledečim aksiomom:
+                \begin{align}
+                    \label{eq0}
+                    \neg 0 &= 1, & \neg 1 =& 0,\\ \label{eq1}
+                    p \wedge 0 &= 0, & p \vee 1 =& 1,\\ \label{eq2}
+                    p \wedge 1 &= p, & p \vee 0 =& p,\\ \label{eq3}
+                    p \wedge \neg p &= 0, & p \vee \neg p =& 1,\\ \label{eq4}
+                        \neg (\neg p) &= p,\\ \label{eq5}
+                    p \wedge p &= p, & p \vee p =& p,\\ \label{eq6}
+                    \neg (p \wedge q) &= \neg p \vee \neg q, & \neg (p \vee q) =& \neg p \wedge \neg q,\\ \label{eq7}
+                    p \wedge q &= q \wedge p, & p \vee q =& q \vee p,\\ \label{eq8}
+                    p \wedge (q \wedge r) &= (p \wedge q) \wedge r, & p \wedge (q \vee r) =& (p \vee q) \vee r,\\ \label{eq9}
+                    p \wedge (q \vee r) &= (p \wedge q) \vee (p \wedge r), & p \vee (q \wedge r) =& (p \vee q) \wedge (p \vee r).
+                \end{align}
+            \end{definicija}
+        \end{column}
+    \end{columns}
+  \end{frame}
+% ===================================================================
+
+% Prosojnica: Stolpci
+\begin{frame}
+    \begin{definicija}[Boolov polinom]
+        {\bf Boolov polinom} je izraz, sestavljen iz konstant \(0\) in \(1\), neznank \(p_0\), \(\ldots\) , \(p_n\), s pomočjo standardnih operacij
+        meet, join in komplementa.
+    \end{definicija}
+\pause
+    \begin{definicija}[Boolova Podalgebra]
+        Boolova podalgebra Boolove algebre $A$ je neprazna podmnožica $B$ množice $A$, ki je z zožitvijo 
+        operacij Boolova algebra.
+    \end{definicija}
+\pause
+    \begin{definicija}[Boolov homomorfizem]
+        Boolov homomorfizem je taka preslikava $f$ iz Boolova algebre $B$ v 
+        Boolovo algebro $A$, da je 
+        \begin{align*}
+            f(p \wedge q) &= f(p) \wedge f(q),\\
+            f(p \vee q) &= f(p) \vee f(q),\\
+            f(p') &= (f(p))',
+        \end{align*}
+        za vsaka \(p, q \in B.\)
+    \end{definicija}
+\end{frame}
+  
+\begin{frame}
+    \begin{trditev}
+        Če se dva homomorfizma ujemata na množici generatorjev domene, tedaj se ujemata povsod na domeni.
+    \end{trditev}
+\pause
+    \begin{proof}
+        Naj bosta \(f,g : B \to A\) homomorfizma, ki se ujemata na množici generatorjev $E$.
+        \(C := \{p \in B~|~ f(p) = g (p)\}\). Množica $E$ je očitno vsebovana v
+        $C$, hkrati pa iz \(p,q \in C\) in 
+        \[f(p \vee q) = f(p) \vee f(q) = g(p) \vee g(q) = g(p\vee q)\]
+        sledi, da so \(p \vee q,~ p \wedge q\) in \(p'\) tudi elementi $C$.
+        Sklepamo, da je $C$ podalgebra v $B$, ki vsebuje $E$, iz česar pa takoj sledi, 
+        enakost \(C = B\).
+    \end{proof}
+\end{frame}
+
+\begin{frame}
+    \begin{definicija}[Prosta Boolova algebra]
+        Množica $E$ generatorjev Boolove algebre $B$ je prosta, če lahko vsako funkcijo iz $E$ v poljubno
+        Boolovo algebro $A$ razširimo do homomorfizma iz $B$ v $A$. Tedaj pravimo, da $E$ prosto generira $B$ oz.
+        $B$ je prosta na $E$. Boolova algebra je prosta, če premore prosto množico generatorjev.
+    \end{definicija}
+\pause
+    \begin{equation*}
+        \xymatrix{
+          {E}
+          \ar[r]^{h}
+          \ar[dr]_{g}
+          &
+          {B}
+          \ar@{-->}[d]^f
+          \\
+          &
+          {A}
+        }
+      \end{equation*}
+\end{frame}
+
+\begin{frame}
+    \begin{table}
+        \begin{minipage}{.5\linewidth}
+          \centering
+            \begin{equation*}
+                \xymatrix{
+                {E_1}
+                \ar[r]^{h_1}
+                \ar@{->}[d]_{g}
+                &
+                {B_1}
+                \ar@<0.5ex>@{-->}[d]^{f_1}
+                \\
+                {E_2}
+                \ar[r]_{h_2}
+                &
+                {B_2}   
+                \ar@<0.5ex>@{-->}[u]^{f_2}
+                }
+            \end{equation*}
+        \end{minipage}
+        \begin{minipage}{.5\linewidth}
+          \centering
+            \begin{equation*}
+                \xymatrix{
+                  {E_1}
+                  \ar[r]^{h_1}
+                  \ar@{->}[dr]_{g^{-1} \circ g}
+                  &
+                  {B_1}
+                  \ar@{-->}[d]^{f_1}
+                  \\
+                  &
+                  {B_1}      
+                }
+            \end{equation*}
+        \end{minipage} 
+    \end{table}
+\end{frame}
+
+  \end{document}
