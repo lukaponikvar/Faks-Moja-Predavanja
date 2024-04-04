@@ -9,7 +9,7 @@
 \usepackage{multirow}
 \usepackage{siunitx}
 \usepackage{bbm}
-\sisetup{output-decimal-marker={,},group-separator={.}}
+%\sisetup{output-decimal-marker={,},group-separator={.}}
 
 
 \newcommand{\RR}{\mathbb{R}}
@@ -115,7 +115,7 @@ Slovenija}
     \begin{align*}
         \emptyset = 0, && \{\infty\} = 1.
     \end{align*}
-    Operaciji ali ter in sta predstavljeni z naslednjima tabelama:
+    Operaciji \textit{ali} ter \textit{in} sta predstavljeni z naslednjima tabelama:
     \begin{align*}
     \begin{tabular}{c|c|c|}
         \(\vee\) & $0$ & $1$ \\
@@ -137,15 +137,15 @@ Slovenija}
 komplementacija pa $0$ preslika v $1$ in obratno.
 \end{primer}
 
-\begin{primer}[Končno-končna Boolova algebra]
+\begin{primer}[Končno-kokončna Boolova algebra]
     Najpreprostejši primer Boolove algebre je potenčna množica neprazne množice \(X\), ki jo seveda opremimo z operacijami unije,
     preseka in komplementa. 
     
-    Malce splošnejši primer je, da si ogledamo določeno podmnožico \(\mathcal{P}\left(X\right)\).
-    Če definiramo \(A := \{B \subset X~|~B~\text{končna  ali } B'~\text{končna}\}\), tudi dobimo Boolovo algebro, imenovano
-    končno-končna Boolova Algebra.
+    Malce splošnejši primer je, da si ogledamo določeno podmnožico potenčne množice \(\mathcal{P}\left(X\right)\).
+    Če definiramo \(A := \{B \subset X~|~B~\text{končna  ali } B'~\text{končna}\}\), dobimo Boolovo algebro, imenovano
+    končno-kokončna Boolova Algebra.
 
-    Lahko se tudi ne omejimo le na končne, ampak na števne množice in dobimo števno-števno Boolovo algebro.
+    Še splošneje pa se lahko omejimo tudi na števne množice in dobimo števno-koštevno Boolovo algebro.
     Premislek deluje za poljubno kardinalnost, je pa to težje dokazati.
 \end{primer}
 
@@ -153,14 +153,15 @@ komplementacija pa $0$ preslika v $1$ in obratno.
 \section{Princip dualnosti}
 
 \begin{definicija}[Boolov polinom]
-    {\bf Boolov polinom} je izraz, sestavljen iz konstant \(0\) in \(1\), neznank \(p_0\), \(\ldots\) , \(p_n\), s pomočjo standardnih operacij
-    meet, join in komplementa.
+    {\bf Boolov polinom} je izraz, sestavljen iz konstant \(0\) in \(1\) ter
+    neznank \(p_0\), \(\ldots\) , \(p_n\) s pomočjo standardnih operacij
+    \textit{in}, \textit{ali} ter komplementa.
 \end{definicija}
 
 \begin{primer}[Boolov polinom]
     Primer polinoma je
     \[p \wedge (q \vee r).\]
-    Ta polinom, pa je na pogled zelo podoben polinomu
+    Ta polinom pa je na pogled zelo podoben polinomu
     \[p \vee (q \wedge r),\]
     kar motivira naslednjo definicijo.
 \end{primer}
@@ -259,31 +260,31 @@ V tem razdelku delujemo v poljubni Boolovi algebri A.
                     &\stackrel{\eqref{eq1}}{=} p \vee 0\\
                     &\stackrel{\eqref{eq2}}{=} p 
     \end{align*}
-    Druga furmula sledi iz dualnosti.
+    Druga formula sledi iz dualnosti.
 
 \end{proof}
 
 
 \begin{lema}
     \label{lema2}
-    \(p \wedge q = p\) natanko tedaj ko \(p \vee q = q\).
+    \(p \wedge q = p\) natanko tedaj, ko \(p \vee q = q\).
 \end{lema}
 
 \begin{proof}
-    Če je \(p \wedge q = p\), je 
+    Naj bo \(p \wedge q = p\), torej: 
     \begin{align*}
         p \vee q &\stackrel{}{=} \left(p \wedge q\right) \vee q \\
                     &\stackrel{\eqref{eq9}}{=} \left(p \vee q\right) \wedge \left(q \vee q\right) \\
                     &\stackrel{\eqref{eq5}}{=} \left(p \vee q\right) \wedge q\\
                     &\stackrel{\ref{lema1}}{=} q 
     \end{align*}
-    Drugo implikacijo dobimo z zamenjavo p in q, ter formiranjem dualov.
+    Drugo implikacijo dobimo z zamenjavo $p$ in $q$, ter formiranjem dualov.
 \end{proof}
 
 \begin{definicija}
-    Na vsaki Boolovi algebri lahko vpeljemo urejenost kot:
+    Na vsaki Boolovi algebri lahko vpeljemo \textbf{urejenost} kot:
     \begin{center}
-        \(p \leq q \) natanko tedaj ko \(p \wedge q  = p.\)
+        \(p \leq q \) natanko tedaj, ko \(p \wedge q  = p.\)
     \end{center}
 \end{definicija}
 
@@ -294,7 +295,7 @@ V tem razdelku delujemo v poljubni Boolovi algebri A.
 \begin{proof}
     Refleksivnost sledi iz \eqref{eq5}, antisimetričnost pa sledi iz \eqref{eq7}: če je \(p \leq q\) in \(q \leq p\), potem
     je \(p = p \wedge q = q \wedge p = q\). Tranzitivnost sledi iz \eqref{eq8}:
-    če je \(p \leq q\) in \(q \leq r\) je \(p\wedge r = \left(p \wedge q\right) \wedge r = p \wedge \left(q \wedge r\right) = p \wedge q = p\)
+    če je \(p \leq q\) in \(q \leq r\), je \(p\wedge r = \left(p \wedge q\right) \wedge r = p \wedge \left(q \wedge r\right) = p \wedge q = p\).
 \end{proof}
 
 \begin{lema}
@@ -314,35 +315,36 @@ V tem razdelku delujemo v poljubni Boolovi algebri A.
 \begin{definicija}[Meje]
     Če je $E$ podmnožica delno urejene Boolove algebre \(A\), lahko govorimo o množici \(F\) vseh zgornjih mej za \(E\).
     Element \(q\) pripada množici \(F\), če za vsak \(p \in E\) velja \(p \leq q\). Če ima \(F\) najmanjši element, je ta 
-    enolično določen in ga imenujemo {\bf supremum} množice \(E\) oz. njena {\bf najmanjša zgornja meja}\footnote{Pišemo tudi natančna zgornja meja.}. Podobno 
-    definiramo {\bf infimum} oz. {\bf največjo spodnjo mejo}\footnote{Pišemo tudi natančna spodnja meja.} množice \(E\)
+    enolično določen in ga imenujemo {\bf supremum} množice \(E\) oz.~njena {\bf najmanjša zgornja meja}\footnote{Pišemo tudi natančna zgornja meja.}. Podobno 
+    definiramo {\bf infimum} oz.~{\bf največjo spodnjo mejo}\footnote{Pišemo tudi natančna spodnja meja.} množice \(E\)
 \end{definicija}
 
 \begin{primer}[Prazna množica]
     \label{primer1}
-    Če je \(E = \emptyset\), je vsak element na prazno zgornja meja te množice. Tedaj ima \(E\) supremum, in sicer kar element \(0\)
+    Če je \(E = \emptyset\), je za vsak element pogoj za zgornjo mejo te množice na prazno izpolnjen.
+    Tedaj ima \(E\) supremum, in sicer kar element \(0\).
     (\ref{lema3} točka \ref{lema3.2}). 
     Podoben razmislek nas privede do zaključka, da je infimum množice \(E\) element \(1\).
 \end{primer}
 
 \begin{primer}[Enojec]
     \label{primer2}
-    Če je \(E = \{p\}\), je p hkrati zgornja in spodnja meja za \(E\). Sledi da je p tudi infimum in supremum.
+    Če je \(E = \{p\}\), je $p$ hkrati zgornja, kot tudi spodnja meja za \(E\). Sledi, da je $p$ tudi infimum in supremum.
 \end{primer}
 
 \begin{lema}
-    Za vsaka \(p\) in \(q\) ima množica \(\{p, q\}\) za supremum element \(p \vee q\) in za infimum element \(\{p \wedge q\}\)
+    Za vsaka \(p\) in \(q\) ima množica \(\{p, q\}\) za supremum element \(\{p \vee q\}\) in za infimum \(\{p \wedge q\}\).
 \end{lema}
 
 \begin{proof}
-    Očitno je \(p \vee q\) zgornja meja te množice. Zaradi točke \ref{lema3.2} v \ref{lema3}, pa je to tudi natančna zgornja meja:
+    Očitno je \(p \vee q\) zgornja meja te množice. Zaradi točke \ref{lema3.2} v \ref{lema3} pa je to tudi natančna zgornja meja:
     če je $p \leq r$ in $q \leq r$ je $p \wedge q \leq r \wedge r = r$.
     Drug del sledi iz dualnosti.
 
 \end{proof}
 
 \begin{opomba}[Posplošitev]
-    Lemo bi lahko posplošili na poljubno končno neprazno množico \(E\). Za infimum pišemo \(\bigwedge E\), za supremum pa
+    Lemo bi lahko posplošili na poljubno končno ne\-praz\-no množico \(E\). Za infimum pišemo \(\bigwedge E\), za supremum pa
     \(\bigvee E.\) Enake oznake uporabljamo za supremume in infimume poljubnih množic (če jih te seveda imajo).
 
     Primera \ref{primer1} in \ref{primer2} bi lahko sedaj zapisali kot:
@@ -360,11 +362,11 @@ V tem razdelku delujemo v poljubni Boolovi algebri A.
 \section{Kompletne Boolove algebre}
 
 Končno-končna Boolova algebra nad \(\NN\) je primer Boolove algebre, kjer nimajo vse podmnožice elementov
-natančnih spodnjih oz. zgornjih mej. Primer take množice je množica vseh enojcev sodih naravnih števil. To motivira naslednjo definicijo.
+natančnih spodnjih oz.~zgornjih mej. Primer take množice je množica vseh enojcev sodih naravnih števil. To motivira naslednjo definicijo:
 
 \begin{definicija}[Kompletna Boolova algebra]
-    Boolova algebra z lastnostjo, da ima vsaka njena podmnožica infimum in supremum se imenuje {\bf kompletna
-    Boolova algebra}.
+    Boolova algebra, v kateri ima vsaka njena podmnožica infimum in supremum, se imenuje {\bf kompletna
+    Boolova \mbox{algebra}}.
 \end{definicija}
 
 
@@ -381,11 +383,11 @@ natančnih spodnjih oz. zgornjih mej. Primer take množice je množica vseh enoj
 \end{lema}
 
 \begin{proof}
-    Denimo, da je \(p = \bigvee_{i} p_i\). Ker je \(p_i \leq p\) za vsak $i$, sledi iz \ref{lema3}, da je \(p' \leq p_i'\) za vsak $i$.
+    Denimo, da je \(p = \bigvee_{i} p_i\). Ker je \(p_i \leq p\) za vsak $i$, iz \ref{lema3} sledi, da je \(p' \leq p_i'\) za vsak $i$.
     Če je \(q \leq p_i'\) za vse $i$, je \(p_i \leq q'\) za vse $i$ in tako po definiciji supremuma \(p \leq q'\) in \(q \leq p'\). 
     Torej je $p'$ res \(\bigwedge_{i} p_i'\).
 
-    Dualni argument zadošča za dokaz v desno druge enačbe. Da dokažemo še obratno smer pa lahko dokazane lastnosti uporabimo na družinah komplementov.
+    Dualni argument zadošča za dokaz druge enačbe v desno . Da dokažemo še obratno smer, pa lahko dokazane lastnosti uporabimo na družinah komplementov.
 
 \end{proof}
 
@@ -397,18 +399,18 @@ natančnih spodnjih oz. zgornjih mej. Primer take množice je množica vseh enoj
     
 % \end{proof}
 
-Zdaj nas zanimajo še lastnosti natančnih zgornjih (spodnjih) mej. Natančneje njihova asociativnost, komutativnost
+Oglejmo si nekaj lastnosti natančnih zgornjih (spodnjih) mej. Natančneje njihovo asociativnost, komutativnost
 in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimum) pripisan neki množici elementov, torej neodvisno od njihove urejenosti.
 
 \begin{lema}[Asociativnost]
-    Če je \(\{I_j\}\) družina množic z unijo \(I\), in če je \(p_i\) element Boolove algebre za vsak \(i \in I\), tedaj je
+    Če je \(\{I_j\}\) družina množic z unijo \(I\) in je \(p_i\) element Boolove algebre za vsak \(i \in I\), tedaj je
     \begin{align*}
         \bigvee_{j}\left(\bigvee_{i \in I_j} p_i\right) = \bigvee_{i \in I} p_i && \text{in} && \bigwedge_{j}\left(\bigwedge_{i \in I_j} p_i\right) = \bigwedge_{i \in I} p_i.
     \end{align*}
 \end{lema}
 
 \begin{proof}
-    Označimo z \(q_j = \bigvee_{i \in I_j} p_i\) in s \(q = \bigvee_j q_j\).
+    Označimo s \(q_j = \bigvee_{i \in I_j} p_i\) in s \(q = \bigvee_j q_j\).
     Za vsak \(i \in I\) obstaja \(j\), da je \(i \in I_j\). Torej za vsak \(i\)
     obstaja \(j\), da je \(p_i \leq q_j\), kar skupaj s \(q_j \leq q\) da \(p_i \leq q\) za vsak \(i\).
     Denimo sedaj, da obstaja tak \(r\), da je \(p_i \leq r\) za vse \(i\). Tedaj je še toliko bolj
@@ -459,8 +461,8 @@ in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimu
 
 % Ali mora biti Kompletna, ali se delamo da ne??
 \begin{definicija}[Kompletno distributivna algebra]
-    Boolova algebra A je {\bf kompletno distributivna}, ko ima naslednjo lastnost:
-    ko vsi supremumi \(\bigvee_{j \in J} p(i, j)\) in infimumi \(\bigwedge_{i \in I} p(i, a(i))\) obstajajo za vsako družino
+    Boolova algebra A je {\bf \mbox{kompletno} distributivna}, ko velja:
+    če vsi supremumi \(\bigvee_{j \in J} p(i, j)\) in infimumi \(\bigwedge_{i \in I} p(i, a(i))\) obstajajo za vsako družino
     \(\{p(i, j)\}\), potem obstoj leve strani \eqref{eq11} implicira obstoj desne strani in njuno enakost.
 \end{definicija}
 
@@ -470,7 +472,7 @@ in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimu
 \section{Podalgebre}
 
 \begin{definicija}
-    Boolova podalgebra Boolove algebre $A$ je neprazna podmnožica $B$ množice $A$, ki je z zožitvijo operacij Boolova algebra.
+    \textbf{Boolova podalgebra} Boolove algebre $A$ je neprazna podmnožica $B$ množice $A$, ki je z zožitvijo operacij Boolova algebra.
     Vsaka neizrojena Boolova Algebra $A$ ima trivialno podalgebro $\mathbbm{2}$, ostale imamo za netrivialne.\
     Vsaka Boolova algebra $A$ premore tudi nepravo podalgebro $A$, vse ostale podalgebre so prave.
 \end{definicija}
@@ -479,22 +481,22 @@ in distributivnost. O komutativnosti ni smisla govoriti, saj je supremum (infimu
     Presek poljubne družine Boolovih podalgeber je ponovno podalgebra. Presek prazne družine porodi nepravo podalgebro.
 \end{opomba}
 
-Če vzamemo neko podmnožico \(E\) v Boolovi algebri \(A\), lahko tvorimo presek vseh podalgeber, ki vsebujejo $E$ (vsaj ena taka obstaja, namreč $A$).
-Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $B$ generirana z $E$ oz.\ da je $E$ množica generatorjev za $B$.
+Če vzamemo neko podmnožico \(E\) v Boolovi algebri \(A\), lahko tvorimo presek $B$ vseh podalgeber, ki vsebujejo $E$ (vsaj ena taka obstaja, namreč $A$).
+Presek $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $B$ \textbf{generirana} z $E$ oz.\ da je $E$ \textbf{množica generatorjev} za $B$.
 
 \begin{primer}
-    Vzemimo \(E = \emptyset\). Podalgebra, ki jo ta množica generira je najmanjša podalgebra, ki jo $A$ premore, namreč $\mathbbm{2}$. Če je $E$ sam po sebi podalgebra pa generira samega sebe.
+    Vzemimo \(E = \emptyset\). Podalgebra, ki jo ta množica generira, je najmanjša podalgebra, ki jo $A$ premore, torej $\mathbbm{2}$. Če je $E$ sam po sebi podalgebra pa generira samega sebe.
 \end{primer}
 
 \begin{definicija}
-    Podalgebra Boolove algebre A je končno generirana, če je generirana s kakšno končno podmnožico $A$.
+    Podalgebra Boolove algebre $A$ je \textbf{končno generirana}, če je generirana s kakšno končno podmnožico $A$.
 \end{definicija}
 
 
 
 
 \begin{izrek}
-    Naj bo $B$ podalgebra generirana s končno množico $E$.
+    Naj bo $B$ podalgebra, generirana s končno množico $E$.
     Atomi v $B$ so neničelni elementi oblike 
     $$p_a = \bigwedge_{i\in E} p(i, a(i)),$$
     in elementi $B$ so oblike 
@@ -506,14 +508,14 @@ Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $
     Za vsak \(i\in A\) in \(j \in \mathbbm{2}\) vpeljimo oznako 
     \[p(i,j) = 
     \begin{cases}
-        i & \text{če $j = 1$,} \\
-        i' & \text{če $j = 0$.}
+        i, & \text{če $j = 1$,} \\
+        i', & \text{če $j = 0$.}
     \end{cases}\]
     Pišimo tudi \(\mathbbm{2}^{E}\) za vse funkcije iz 
     $E$ v $\mathbbm{2}$ in za vsak \(a \in \mathbbm{2}^{E}\) vpeljimo
     \[p_a := \bigwedge_{i \in E} p(i, a(i)).\]
 
-    Opazimo lahko, da za $a\neq b \in \mathbbm{2}^{E}$ velja 
+    \noindent Opazimo lahko, da za $a\neq b \in \mathbbm{2}^{E}$ velja 
     $p_a \wedge p_b \leq i\wedge i'  = 0$, za nek $i$, kjer se funkciji razlikujeta.
     Po drugi strani pa velja
     \begin{align}
@@ -522,7 +524,7 @@ Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $
         \bigwedge_{i \in E} p(i, a(i)) = \bigvee_{a \in \mathbbm{2}^{E}} p_a.
     \end{align}
 
-    Naj bo $K$ množica vseh \(a \in \mathbbm{2}^{E}\), da je \(p_a \neq 0\) in za vsako
+    \noindent Naj bo $K$ množica vseh \(a \in \mathbbm{2}^{E}\), da je \(p_a \neq 0\) in za vsako
     podmnožico $X$ pod $K$ pišimo 
     \begin{align}
         \label{eq13}
@@ -548,55 +550,55 @@ Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $
     \begin{align*}
         p_X\wedge p_{X'} = p_{x\cap X'} = p_\emptyset = 0 && \text{in}&& p_X\vee p_{X'} = p_{x\cup X'} = p_K = 1,
     \end{align*}
-    in leme \ref*{lema0}.
+    in leme \ref*{lema0}.\\
 
-    Označimo \(C := \{p_X ~|~ X \subseteq K\}\). Ugotovitve dokazujejo, da je $C$ podalgebra
-    v $A$. Po \eqref{eq0} je C neprazna, po \eqref{eq5}-\eqref{eq7} pa je 
-    zaprta za operacije. Za $a \in K$ je $p_a$ atom. Vsak element iz C se 
-    da enolično zapisati kot ``join'' teh elementov. Če je $p_X = p_Y$, je
+    \noindent Označimo \(C := \{p_X ~|~ X \subseteq K\}\). Ugotovitve dokazujejo, da je $C$ podalgebra
+    v $A$. Po \eqref{eq0} je $C$ neprazna, po \eqref{eq5}-\eqref{eq7} pa je 
+    zaprta za operacije. Za $a \in K$ je $p_a$ atom. Vsak element iz $C$ se 
+    da enolično zapisati kot \textit{``in''} teh elementov. Če je $p_X = p_Y$, je
     \begin{align*}
         0 =(p_X \wedge p_Y') \vee (p_X' \wedge p_Y) &= (p_X \wedge p_{Y'}) 
         \vee (p_{X'} \wedge p_Y)
-        \\&= p_{(X \cap Y') \cup (X' \cap Y)} =: p_{X \oplus Y}
+        \\&= p_{(X \cap Y') \cup (X' \cap Y)} =: p_{X \oplus Y},
     \end{align*}
-    kar je enako $0$ natanko tedaj, ko je $X \oplus Y = \emptyset$, to pa velja izključno,
-    ko je $X = Y$.
+    kar je enako $0$ natanko tedaj, ko je $X \oplus Y = \emptyset$. To pa velja izključno,
+    kadar je $X = Y$.\\
 
-    Denimo, da je \(F \subseteq E\) in $b \in \mathbbm{2}^{F}$. Pišimo
+    \noindent Denimo, da je \(F \subseteq E\) in $b \in \mathbbm{2}^{F}$. Pišimo
     \[p_b = \bigwedge_{i\in F} p(i,b(i)).\]
-    Pokazali bomo, da je $p_b$ v $C$, tako da bomo pokazali
+    Pokazali bomo, da je $p_b$ v $C$, in sicer tako, da bomo pokazali
     \[p_b = \bigwedge \{p_a~|~a\in K \text{ in } a \text{ razširja } b\}.\]
     Naj bo $L$ množica funkcij v $K$, ki razširjajo $b$. Če je $a$ v $L$, potem je 
-    \(a(i) = b(i)\) in zatorej
-    \[p(i,b(i)) = p(i,a(i)),\]
-    za vsak $i \in F$, posledično
+    \(a(i) = b(i)\) in zato
+    \[p(i,b(i)) = p(i,a(i))\]
+    za vsak $i \in F$. Posledično
     \[\{p(i,b(i))~|~i\in F\} \subseteq \{p(i,a(i))~|~i\in E\}.\]
     Sledi, da 
     \[p_b = \bigwedge_{i\in F} p(i,b(i)) \geq \bigwedge_{i\in E} p(i,a(i)) = p_a.\]
-    V drugih besedah,
+    V drugih besedah:
     \begin{align*}
-        p_b \wedge p_a = p_a && \text{ko} && a\in L. 
+        p_b \wedge p_a = p_a, && \text{ko} && a\in L. 
     \end{align*}
-    Po drugi strani pa se v primeru $a \notin L$ $a$ in $b$ razlikujeta na nekem argumentu
+    Po drugi strani pa se v primeru ko $a$ ni v $L$, elementa $a$ in $b$ razlikujeta na nekem argumentu
     $i \in F$. Eden izmed $p(i,b(i))$ in $p(i,a(i))$ je torej $i$, drug pa $i'$, torej
     \[p_b \wedge p_a \leq p(i,b(i)) \wedge p(i,a(i)) = 0.\]
     Torej 
     \begin{align*}
         p_b \wedge p_a = 0 && \text{ko} && a\notin L. 
     \end{align*}
-    Sklenimo razmislek sedaj z
+    Sklenimo razmislek z
     \begin{multline*}
         p_b = p_b \wedge 1 = p_b \wedge p_K = p_b \wedge \bigvee_{a \in K} p_a
         = \bigvee_{a \in K} (p_b \wedge p_a) = \bigvee_{a \in L} (p_b \wedge p_a)
-        = \bigvee_{a \in L} p_a
+        = \bigvee_{a \in L} p_a.
     \end{multline*}
 
-    Naj bo $B$ podalgebra v $A$ generirana z $E$. Vzemimo $i \in E$. Če je 
+    \noindent Naj bo $B$ podalgebra v $A$ generirana z $E$. Vzemimo $i \in E$. Če je 
     $b$ funkcija iz $\{i\}$ v $\mathbbm{2}$, definirana z $b(i) = 1$, potem je
-    $p_b = p(i, b(i)) = i$ in $i\in C$. Posledično je $E$ vsebovan v $C$ in s tem cel $B$.
-    Za dokaz druge smeri se moramo spomniti, da je vsak atom $p_a$ končen ``meet''
+    $p_b = p(i, b(i)) = i$ in $i\in C$. Posledično je $E$, in s tem cel $B$, vsebovan v $C$.
+    Za dokaz druge smeri pa se moramo spomniti, da je vsak atom $p_a$ končen \textit{``ali''}
     elementov iz $E$ in njihovih komplementov. Posledično pripada $p_a$ k $B$. Element
-    \(p_X\) je končen ``join'' takih elementov in tudi sam pripada $B$.
+    \(p_X\) je končen \textit{``in''} takih elementov in tudi sam pripada k $B$.
 \end{proof}
 
 \begin{posledica}
@@ -607,44 +609,44 @@ Ta presek, recimo $B$ je najmanjša podalgebra, ki vsebuje $E$. Rečemo, da je $
 
 \begin{proof}
     Če ima $E$ $n$ elementov, potem je $2^n$ funkcij iz $E$ v $\mathbbm{2}$.
-    Tako obstaja kvečjemu $2^n$ atomov. Denima da je $m$ atomov. 
-    Vsak element se da zapisati kot ``join'' atomov 
-    in vsak ``join'' atomov predstavlja nek element. 
+    Tako obstaja kvečjemu $2^n$ atomov. Denimo, da je atomov $m$. 
+    Vsak element se da zapisati kot \textit{``in''} atomov 
+    in vsak \textit{``in''} atomov predstavlja nek element. 
     Tedaj je natanko $2^{m}$ elementov.
 \end{proof}
 
 \begin{posledica}
     Element poljubne Boolove algebre je v podalgebri generirani z $E$ natanko tedaj,
-    ko se da zapisati kot končen ``join'' končnih ``meetov'' elementov iz $E$ 
+    ko se da zapisati kot končen \textit{``in''} končnih \textit{``ali-jev''} elementov iz $E$ 
     in njihovih elementov.
 \end{posledica}
 
 \begin{proof}
     Denimo, da je $E$ podmnožica v Boolovi algebri $A$. Za vsako končno podmnožico $F$ pod $E$
-    naj bo $B_F$ podalgebra v $A$ generirana z $F$ in naj bo $K_F$ množica funkcij
+    naj bo $B_F$ podalgebra v $A$, generirana s $F$, in naj bo $K_F$ množica funkcij
     $b \in$ 
 \end{proof}
 
 
-Naj bo $A$ Boolova algebra in $B$ podalgebra.
+Naj bo $A$ Boolova algebra in $B$ njena podalgebra.
 Izkaže se, da se poljubni supremumi in infimumi obnašajo nepohlevno.
-Supremumi in infimumi lahko spreminjajo vrednosti, lahko jih celo zgubimo ali pa dobimo,
+Supremumi in infimumi lahko spreminjajo vred\-nos\-ti, lahko jih celo zgubimo, ali pa dobimo,
 ko prehajamo med $A$ in $B$.
 
 \begin{definicija}
     Naj bo $A$ kompletna Boolova algebra in $B$ njena podalgebra.
-    Če za vsako podmnožico $B$ njen supremum (v $A$) leži v $B$ pravimo, da je 
-    $B$ kompletna Boolova podalgebra. Seveda to avtomatično implicira identično trditev za infimume.
+    Če za vsako podmnožico $B$ njen supremum (v $A$) leži v $B$, pravimo, da je 
+    $B$ \textbf{kompletna Boolova podalgebra}. Seveda to avtomatično implicira identično trditev za infimume.
 \end{definicija}
 
-Ta definicija je močnejša, kot če bi zahtevali, da je $B$ sama kompletna boolova algebra.
+Ta definicija je močnejša, kot če bi zahtevali, da je $B$ sama kompletna Boolova algebra.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Homomorfizmi}
 
 \begin{definicija}[Boolov homomorfizem]
-    Boolov homomorfizem je taka preslikava $f$ iz Boolova algebre $B$ v 
+    \textbf{Boolov homomorfizem} je taka preslikava $f$ iz Boolove algebre $B$ v 
     Boolovo algebro $A$, da je 
     \begin{align*}
         f(p \wedge q) &= f(p) \wedge f(q),\\
@@ -654,11 +656,11 @@ Ta definicija je močnejša, kot če bi zahtevali, da je $B$ sama kompletna bool
     za vsaka \(p, q \in B.\)
 \end{definicija}
 
-Z lahkoto se prepričamo, da velja \(f(0) = 0\) in \(f(1) = 1\). Posledica tega dejstva je, da ne obstaja trivialni homomorfizem med dvema
+Z lahkoto se prepričamo, da velja \(f(0) = 0\) in \(f(1) = 1\). Posledično ne obstaja trivialni homomorfizem med dvema
 neizrojenima Boolovima algebrama. Prepričamo se lahko tudi, da je \(f_{*}(B)\) podalgebra v \(A\).
 
 \begin{definicija}
-    Izomorfizem Boolovih algeber je bijekcija, ki je hkrati homomorfizem.
+    \textbf{Izomorfizem Boolovih algeber} je bijekcija, ki je hkrati homomorfizem.
 \end{definicija}
 
 Izomorfizem ohranja vse morebitne supremume in infimume, homomorfizem pa 
@@ -677,7 +679,7 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \section{Razširitve homomorfizmov}
 
 \begin{definicija}
-    Boolov homomorfizem $f$ je razširitev Boolovega homomorfizma $g$, če je 
+    Boolov homomorfizem $f$ je \textbf{razširitev} Boolovega homomorfizma $g$, če je 
     domena $g$ podalgebra domene $f$ in se homomorfizma ujemata na elementih iz domene $g$.
 \end{definicija}
 
@@ -687,12 +689,13 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \end{trditev}
 
 \begin{proof}
-    Naj bosta \(f,g : B \to A\) homomorfizma, ki se ujemata na množici generatorjev $E$.
-    \(C := \{p \in B~|~ f(p) = g (p)\}\). Množica $E$ je očitno vsebovana v
+    Naj bosta \(f,g : B \to A\) homomorfizma, ki se ujemata na množici generatorjev $E$ in naj bo
+    \(C := \{p \in B~|~ f(p) = g (p)\}\). 
+    Množica $E$ je očitno vsebovana v
     $C$, hkrati pa iz \(p,q \in C\) in 
     \[f(p \vee q) = f(p) \vee f(q) = g(p) \vee g(q) = g(p\vee q)\]
     sledi, da so \(p \vee q,~ p \wedge q\) in \(p'\) tudi elementi $C$.
-    Sklepamo, da je $C$ podalgebra v $B$, ki vsebuje $E$, iz česar pa takoj sledi, 
+    Sklepamo, da je $C$ podalgebra v $B$, ki vsebuje $E$, iz česar pa takoj sledi 
     enakost \(C = B\).
     \label{enolicno}
 \end{proof}
@@ -701,13 +704,13 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \section{Atomi}
 
 \begin{definicija}[Podelement]
-    Naj bo $p_0$ element Boolove algebre. Podelement elementa $p_0$ je vsak element
-    \(p\), za katerega velja \(p \leq p_0\) oz. ekvivalentno je podelement elementa $p_0$ vsak element oblike
+    Naj bo $p_0$ element Boolove algebre. \textbf{Podelement} elementa $p_0$ je vsak element
+    \(p\), za katerega velja \(p \leq p_0\) oz.~ekvivalentno: \textbf{Podelement} elementa $p_0$ je vsak element oblike
     \(p_0 \wedge p\) za nek element \(p\).
 \end{definicija}
 
 \begin{definicija}[Atom]
-    {\bf Atom} Boolove algebre je neničeln element, ki nima netrivialnih podelementov oz.\ ko sta njegova edina podelementa natanko $0$ in on sam.
+    {\bf Atom} Boolove algebre je neničeln element, ki nima netrivialnih podelementov oz.\ sta njegova edina podelementa natanko $0$ in on sam.
 \end{definicija}
 
 \begin{lema}
@@ -722,21 +725,21 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \end{lema}
 
 \begin{proof} 
-    \(1 \Rightarrow 2\)) \(q \wedge p \leq q\), kar implicira ali
+    \(1 \Rightarrow 2\) \(q \wedge p \leq q\), kar implicira ali
     \(q \wedge p = 0\) ali \(q \wedge p = q\) (\(q \leq p\)). Če bi veljalo oboje, bi bil
     $q = 0$, kar pa je protislovje. 
 
-    \(2 \Rightarrow 3\)) Če je \(q \wedge p = 0\) je 
+    \(2 \Rightarrow 3\) Če je \(q \wedge p = 0\) je 
     \[q = q \wedge 1 = q \wedge \left(p \vee p'\right) = \left(q \wedge p\right)
     \vee \left(q \wedge p'\right) = 0 \vee \left(q \wedge p'\right) = 
     \left(q \wedge p'\right),\]
-    torej \(q \leq p'\). Če bi veljalo oboje, bi veljalo \(q \leq 0\), kar pa je možno le če 
+    torej \(q \leq p'\). Če bi veljalo oboje, bi veljalo \(q \leq 0\), kar pa je možno le, če 
     je $q = 0$ in spet dobimo protislovje, saj veljata obe izmed \(q \leq p\) ali \(q \wedge p = 0\).
 
-    \(3 \Rightarrow 4\)) Če je \(q = 0\) dobimo protislovje kot prej. Če ne, je \(q \leq p', r'\), potem je 
+    \(3 \Rightarrow 4\) Če je \(q = 0\) dobimo protislovje. Če ne, je \(q \leq p', r'\), potem je 
     \(q = q \wedge (p' \wedge r') = q \wedge (p \vee r)'\) in \(q \leq (p \vee r)'\).
 
-    \(4 \Rightarrow 5\))
+    \(4 \Rightarrow 5\)
 
 \end{proof}
 
@@ -746,14 +749,14 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 
 \begin{proof}
     Očitno je vsak element iz $E$ pod $p$. 
-    Če je $r$ nek atom pod $p$ velja, da je $r$ pod nekim atomom \(q \in E\),
-    Od tod pa sledi $r = q$.
+    Če je $r$ nek atom pod $p$, velja, da je $r$ pod nekim atomom \(q \in E\),
+    Od tod sledi $r = q$.
 \end{proof}
 
 
 \begin{definicija}
-    Boolova algebra je atomska, če vsak neničeln element dominira vsaj en atom. 
-    Boolova algebra je brezatomska, če nima atomov.
+    Boolova algebra je \textbf{atomska}, če vsak neničeln element dominira vsaj en atom. 
+    Boolova algebra je \textbf{brezatomska}, če nima atomov.
 \end{definicija}
 
 \begin{lema}
@@ -766,28 +769,28 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \end{lema}
 
 \begin{proof}
-    \(1 \Rightarrow 2\)) Naj bo $p$ element $A$ in $E$ množica atomov, ki 
+    \(1 \Rightarrow 2\) Naj bo $p$ element $A$ in $E$ množica atomov, ki 
     jih dominira. Očitno je $p$ zgornja meja te množice. Denimo, da je tudi $r$ 
-    zgornja meja te množice. Denimo, da \(p \nleq q\) oz. \(p \wedge  r' \neq 0\).
-    Ker je $A$ atomska obstaja atom \(q \leq (p \wedge r')\). Ker pa je presek 
-    na desni pod $p$ je tedaj $q \in E$, $q \leq r$ in
+    zgornja meja te množice. Denimo, da \(p \nleq q\) oz.~\(p \wedge  r' \neq 0\).
+    Ker je $A$ atomska, obstaja atom \(q \leq (p \wedge r')\). Ker pa je presek 
+    na desni pod $p$, je tedaj $q \in E$, $q \leq r$ in
     \[q \leq (p \wedge r') \wedge r = p \wedge (r' \wedge r) = p \wedge 0 = 0.\]
     Sklepamo lahko, da je $q = 0$, kar je protislovje.
 
-    \(2 \Rightarrow 3\)) Očitno. 
+    \(2 \Rightarrow 3\) Očitno. 
 
 
-    \(3 \Rightarrow 1\)) Naj bo \(E\) množica vseh atomov in $p$ neničeln element.
+    \(3 \Rightarrow 1\) Naj bo \(E\) množica vseh atomov in $p$ neničeln element.
     Tedaj je 
     \[p = p \wedge 1 = p \wedge \bigvee E = \bigvee \{p \wedge q~|~q\in E\},\]
-    po lemi \ref*{notnes}. Ker je p neničeln je gotovo \(p \wedge q\) neničeln 
+    po lemi \ref*{notnes}. Ker je $p$ neničeln, je gotovo \(p \wedge q\) neničeln 
     za nek \(q \in E\), to pa je atom pod \(p\).
 \end{proof}
 
 \begin{definicija}
-    Reprezentacija Boolove algebre $A$ (nad množico $X$) je vložitev $A$
+    \textbf{Reprezentacija} Boolove algebre $A$ (nad množico $X$) je vložitev $A$
     v \(\mathcal{P}(X)\). Če reprezentacija ohranja supremume kot unije
-    (torej tudi infimume kot preseke) ji pravimo kompletna. Z drugimi besedami, 
+    (torej tudi infimume kot preseke) ji pravimo \textbf{kompletna}. Z drugimi besedami, 
     reprezentacija $f$ je kompletna, ko za vsako družino \(\{p_i\}\)
     s supremumom \(p\) velja 
     \[f(p) = \bigcup_i f(p_i).\]
@@ -805,7 +808,7 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \end{proof}
 
 \begin{posledica}
-    Dve kompletni, atomski Boolovi algebri z enakim številom atomov sta izomorfni.
+    Dve kompletni atomski Boolovi algebri z enakim številom atomov sta izomorfni.
     Še več, vsaka bijekcija med množicama atomov se lahko razširi do 
     izomorfizma med algebrama.
 \end{posledica}
@@ -824,10 +827,10 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 \end{trditev}
 
 \begin{proof}
-    Naj bo \(p\) element končne Boolove algebre. \(p\) je atom, ali pa obstaja 
-    neničeln element \(p_1\), ki je strogo manjši. \(p_1\) je atom (in smo končali), ali pa obstaja 
+    Naj bo \(p\) element končne Boolove algebre. ELement \(p\) je atom, ali pa obstaja 
+    neničeln element \(p_1\), ki je strogo manjši. Ponovno je element \(p_1\) ali atom (in smo končali), ali pa obstaja 
     neničeln element \(p_2\), ki je strogo manjši in tako naprej. Ker je elementov 
-    le končno nonogo se mora ta proces ustaviti
+    le končno nonogo, se mora ta proces ustaviti
     in tako dobimo atom, ki je manjši od \(p\).
 \end{proof}
 
@@ -838,11 +841,11 @@ v splošnem ne. Homomorfizem imenujemo kompleten, če ohranja vse supremume (in 
 
 \begin{proof}
     Končna Boolova algebra je atomska in kompletna. Naj bo $n$ število atomov v njej.
-    $\mathcal{P}(n)$ je tudi atomska kompletna algebra, ki ima $n$ atomov, ki so 
-    ravno vse enoelementne množice. Taki pa sta po posledici \ref{resime} izomorfni.
+    $\mathcal{P}(n)$ je atomska kompletna algebra, ki ima $n$ atomov, ki so 
+    ravno vse enoelementne množice. Taki algebri pa sta po posledici \ref{resime} izomorfni.
 \end{proof}
 
-Posledica nam pove, da ni končnih Boolovih algeber moči, ki ni potenca števila 2.
+Posledica nam pove, da ne obstaja končna Boolova algebra moči, ki ne bi bila potenca števila 2.
 
 \begin{posledica}
     Končni Boolovi algebri z enakim številom elementov sta izomorfni.
@@ -868,9 +871,9 @@ Posledica nam pove, da ni končnih Boolovih algeber moči, ki ni potenca števil
 \begin{proof}
     Naj bo $A$ poljubna neizrojena Boolova algebra.
     Identiteta je univerzalna trditev o elementih in operacijah Boolove
-    algebre: če valja v $A$, velja tudi v vsaki podalgebri, saj so elementi 
+    algebre: če velja v $A$, velja tudi v vsaki podalgebri, saj so elementi 
     podalgebre med elementi iz $A$ in so operacije le zožitve operacij v $A$.
-    Ker je $A$ neizrojena vsebuje kopijo $\mathbbm{2}$ kot podalgebro, 
+    Ker je $A$ neizrojena, vsebuje kopijo $\mathbbm{2}$ kot podalgebro, 
     torej lastnosti v $A$ veljajo tudi v $\mathbbm{2}$. Če lastnost velja
     v  $\mathbbm{2}$, se jo da po prejšnjem izreku izpeljati iz aksiomov,
     torej velja tudi v $A$.
@@ -880,13 +883,12 @@ Posledica nam pove, da ni končnih Boolovih algeber moči, ki ni potenca števil
 \section{Proste Boolove algebre}
 
 \begin{definicija}
-    Množica $E$ generatorjev Boolove algebre $B$ je prosta, če lahko vsako funkcijo iz $E$ v poljubno
-    Boolovo algebro $A$ razširimo do homomorfizma iz $B$ v $A$. Tedaj pravimo, da $E$ prosto generira $B$ oz.
-    $B$ je prosta na $E$. Boolova algebra je prosta, če premore prosto množico generatorjev.
+    Množica $E$ generatorjev Boolove algebre $B$ je \textbf{prosta}, če lahko vsako funkcijo iz $E$ v poljubno
+    Boolovo algebro $A$ razširimo do homomorfizma iz $B$ v $A$. Tedaj pravimo, da $E$ \textbf{prosto generira} $B$ oz.~$B$ je prosta na $E$. Boolova algebra je prosta, če premore prosto množico generatorjev.
 \end{definicija}
 
-Definicijo lahko razložimo s pomočjo naslednjega diagrama. $h$ je identična preslikava iz $E$ v $B$,
-$g$ je preslikava, definirana na $E$, $f$ pa je porojen homomorfizem
+Definicijo lahko razložimo s pomočjo naslednjega diagrama. Preslikava $h$ je identiteta iz $E$ v $B$,
+preslikava $g$ je definirana na $E$, preslikava $f$ pa je porojen homomorfizem
 iz definicije.
 
 \begin{equation*}
@@ -903,16 +905,16 @@ iz definicije.
   }
 \end{equation*}
 
-Posledica trditve \ref{enolicno} je, da je dobljeni homomorfizem enolično
+Iz trditve \ref{enolicno} sledi, da je dobljeni homomorfizem enolično
 določen z $g$.
 
-Če imamo dve Boolovi algebri $B_1$ in $B_2$, ki sta prosti generirani
+Če imamo dve Boolovi algebri $B_1$ in $B_2$, ki sta prosti in generirani
 z ekvipolentnima množicama generatorjev $E_1$ in $E_2$,
 sta ti izomorfni. Izomorfizem 
 je porojen z vsako bijekcijo $g$ med $E_1$ in $E_2$.
-Predpostavka o prostosti zagotovi homomorfizma \(f_1: B_1 \to B_2\) in \(f_2: B_2 \to B_1\),
-ki razširita \(g\) in \(g^{-1}\). \(f_2 \circ f_1\) je endomorfizem
-$B_1$, ki razširi \(g^{-1} \circ g\), torej identiteto na $E_1$. Identiteta na $B_1$ sama
+Predpostavka o prostosti zagotovi homomorfizma \(f_1:~B_1 \to B_2\) in \(f_2:~B_2 \to B_1\),
+ki razširita \(g\) in \(g^{-1}\). Preslikava \(f_2 \circ f_1\) je endomorfizem
+$B_1$, ki razširi \(g^{-1} \circ g\), torej identiteto na $E_1$. Sama identiteta na $B_1$ 
 pa je že razširitev te preslikave, torej je zaradi enoličnosti
 \(f_2 \circ f_1 = id_{B_1}\). Podobno vidimo, da je \(f_1 \circ f_2 = id_{B_2}\).
 Torej je \(f_1\) izomorfizem, \(f_2\) pa njegov inverz.
@@ -1011,9 +1013,9 @@ Torej je \(f_1\) izomorfizem, \(f_2\) pa njegov inverz.
 
 \geslo{Complete Boolean algebra}{Kompletna Boolova algebra}
 
-\geslo{Finite-cofinite Boolean algebra}{Končno-končna Boolova algebra}
+\geslo{Finite-cofinite Boolean algebra}{Končno-kokončna Boolova algebra}
 
-\geslo{Countable-cocountable Boolean algebra}{Števno-števna Boolova algebra}
+\geslo{Countable-cocountable Boolean algebra}{Števno-koštevna Boolova algebra}
 
 \geslo{Atom}{Atom}
 
